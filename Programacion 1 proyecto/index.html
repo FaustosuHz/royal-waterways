@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Perrito Feliz</title>
+</head>
+ 
+<body>
+    <main>
+  
+    <section id="sectionRegistro" class="secciones">
+        <h1>Registro</h1>
+            <label>Nombre de Usuario</label><input type="text" id="txtUsuario" placeholder="Nombre"/><br><br>
+            <label>Contraseña</label><input type="password" id="txtContrasenia" placeholder="Contraseña"/><br><br>
+            <label>Nombre de Perro</label><input type="text" id="txtNombrePerro" placeholder="Nombre del perro"/><br><br>
+            <label>Tamaño del Perro</label>
+                <select id="tamanioPerro">
+                    <option value="">Seleccionar Tamaño</option>
+                    <option value="1">Pequeño</option>
+                    <option value="2">Mediano</option>
+                    <option value="3">Grande</option>
+                </select><br><br>
+            <input type="button" id="btnRegistrar" value="Registrar" /> <input type="button" value="VOLVER" class="volverPrincipio"><br><br><br>
+                
+                  <div id="divMostrar"></div>
+    </section>
+
+    <section id="sectionLogin" class="secciones">
+        <h2>Ingresar</h2>
+            <label>Nombre de Usuario</label><input type="text" id="txtUsuarioExistente" placeholder="Nombre" value="davmart"/><br><br>
+            <label>Contraseña</label><input type="password" id="txtContraseniaExistente" placeholder="Contraseña" value="Pas1234"/><br><br>
+            <input type="button" id="btnLogin" value="Ingresar" /> <input type="button" value="VOLVER" class="volverPrincipio"> <br>
+            <p id="errorLogin"></p>
+    </section>
+
+    <section id="sectionLoginYRegistro" class="secciones">
+      <figure>
+            <img src="img/paseo.jpg" alt="Perrito Feliz">
+      </figure>
+            <input type="button" value="LOGIN" id="ingresarLogin"> <input type="button" value="REGISTRO" id="ingresarRegistro">
+    </section>
+
+    <div id="cerrarSesion" class="secciones">
+      <input type="button" value="Cerrar Sesion" id="btnCerrarSesion">
+    </div>
+
+    <section  id="sectionCliente" class="secciones">
+        <h2>CLIENTE</h2>
+          <p id="pMostrarNombreCliente"></p>
+
+        <div id="contratarPaseador" class="secciones">
+          <h3>Contratar paseador</h3>
+
+            <select id="selPaseadores"></select><br><br>
+            <div id="tablaPaseador"></div>
+        </div>
+
+        <div id="divMostrar"></div>
+
+      <div id="misContrataciones" class="secciones">
+        <h3>Mis Contrataciones</h3>
+
+        <div id="tablaMiContratacion"></div>
+        <div id="tablaMiContratacion2"></div><br><br>
+      
+      <input type="button" value="Lista de todos nuestros Paseadores!" id="btnlistaTodosPaseadores"><br><br>
+      <div id="tablaTodosLosPaseadores" class="secciones"></div><br>
+      </div>
+
+    </section>
+
+    <section class="secciones" id="sectionPaseador">
+        <h2>PASEADOR</h2>
+          <p id="pMostrarNombrePaseador"></p>
+
+        <div class="secciones" id="sectionMostrarContrataciones">
+          <input type="button" value="Mostrar Contrataciones" id="btnGestionContrataciones"><br><br>
+          <table id="tblGestionContrataciones" border="1px"></table><br><br>
+        </div>
+
+        <div class="secciones" id="sectionListadoDePerroAsignados">
+          <input type="button" value="Ver listado de perro asignado" id="btnVerListadoAsignado"><br><br>
+          <table id="tblListadoPerroAsignado" border="1px"></table><br><br>
+        </div>
+    </section>
+
+   </main>
+
+    <script src="js/clases.js"></script>
+    <script src="js/sistema.js"></script>
+    <script src="js/preCarga.js"></script>
+    <script src="js/codigoUI.js"></script>
+    
+</body>
+</html>

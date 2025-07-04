@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+figure img{
+  height: 300px;
+  width: 300px;
+}
+
+section {
+  text-align: center;
+}
+
+#misContrataciones, #tablaMiContratacion, #tablaMiContratacion2, #tablaPaseador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
