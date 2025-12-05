@@ -1,0 +1,20 @@
+﻿@using Dominio
+@model Dominio.Gasto
+
+<div class="gasto-delete-page">
+    <div class="gasto-delete-container">
+
+        <h2 class="gasto-delete-titulo">Eliminar gasto</h2>
+
+        <p class="gasto-delete-texto">
+            ¿Desea eliminar este gasto permanentemente?
+        </p>
+
+        <p style="color:red">@ViewBag.Mensaje</p>
+
+        <form method="post" class="gasto-delete-form">
+            <input type="submit" value="Eliminar" class="btn-eliminar" />
+            <a asp-action="Index" asp-controller="Gasto" class="btn-volver">Volver</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@using Dominio
+@model IEnumerable<Dominio.Gasto>
+
+<div class="gasto-page gasto-index">
+    <div class="gasto-container">
+        <h2 class="gasto-titulo">Lista de Gastos</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Gasto g in Model)
+                {                 
+                  <tr>
+                      <td>@g.Nombre</td>
+                      <td>@g.Descripcion</td>
+                      <td>@Html.ActionLink("Eliminar", "Delete", new { id = g.Id })</td>
+                  </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

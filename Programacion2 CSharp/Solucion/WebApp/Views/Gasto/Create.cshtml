@@ -1,0 +1,21 @@
+﻿@using Dominio
+@model IEnumerable<Dominio.Gasto>
+
+<div class="pago-page pago-create">
+    <div class="pago-container">
+
+        <h2 class="pago-titulo">Cargar Gasto</h2>
+
+        <form method="post" class="form-pago">
+            <label>Nombre:*</label>
+            <input type="text" name="nombre" maxlength="20" required/>
+
+             <label>Descripción:*</label>
+            <input type="text" name="descripcion" maxlength="30" required/>
+
+            <input type="submit" value="Guardar"/>
+        </form>
+
+        <p>@ViewBag.Msg</p>
+    </div>
+</div>

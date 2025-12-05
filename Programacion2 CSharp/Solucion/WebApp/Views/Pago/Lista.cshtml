@@ -1,0 +1,70 @@
+﻿@using Dominio
+@model IEnumerable<Dominio.Pago>
+
+@{
+    DateTime hoy = DateTime.Now;
+    int mesActual = hoy.Month;
+    int anioActual = hoy.Year;
+
+    int mesMostrar = ViewBag.Mes ?? mesActual;
+    int anioMostrar = ViewBag.Anio ?? anioActual;
+}
+
+<div class="pago-page pago-index">
+    <div class="pago-container">
+        <h2 class="pago-titulo">Pagos de tu equipo</h2>
+
+<form method="get" asp-action="Lista" class="filtro-pagos-form">
+
+    <label>Mes:
+        <select name="mesSeleccionado">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+    </label>
+
+    <label>Año: <input type="number" name="anioSeleccionado" min="2000" max="@DateTime.Now.Year" value="@DateTime.Now.Year"/></label>
+
+    <input type="submit" value="Filtrar" class="btn-filtrar" />
+</form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Pago</th>
+                    <th>Responsable</th>
+                    <th>Forma de pago</th>
+                    <th>Descripción</th>
+                    <th>Monto total</th>
+                    <th>Monto con benef/rec</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Pago p in Model)
+                {
+                    <tr>
+                        <td>@p.Fecha().ToString("dd/MM/yyyy")</td>
+                        <td>@p.TipoDeGasto.Nombre</td>
+                        <td>@p.Usuario.Nombre @p.Usuario.Apellido</td>
+                        <td>@p.TipoPago</td>
+                        <td>@p.Descripcion</td>
+                        <td>$@p.MontoOriginal.ToString("#.##")</td>
+                        <td>$@p.Monto.ToString("#.##")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

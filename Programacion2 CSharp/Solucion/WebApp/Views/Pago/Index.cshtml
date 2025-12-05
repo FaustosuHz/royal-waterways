@@ -1,0 +1,41 @@
+﻿@using Dominio
+@model IEnumerable<Dominio.Pago>
+
+@{
+    DateTime hoy = DateTime.Now;
+    int mes = hoy.Month;
+    int anio = hoy.Year;
+}
+
+<div class="pago-page pago-index">
+    <div class="pago-container">
+        <h2 class="pago-titulo">Tus Pagos</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Pago</th>
+                    <th>Forma de pago</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Pago p in Model)
+                {
+                  if (p.Fecha().Month == mes && p.Fecha().Year == anio)
+                    {                    
+                     <tr>
+                        <td>@p.Fecha().ToString("dd/MM/yyyy")</td>
+                        <td>@p.TipoDeGasto.Nombre</td>
+                        <td>@p.TipoPago</td>
+                        <td>@p.Descripcion</td>
+                        <td>$@p.Monto.ToString("#.##")</td>
+                     </tr>
+                    }   
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

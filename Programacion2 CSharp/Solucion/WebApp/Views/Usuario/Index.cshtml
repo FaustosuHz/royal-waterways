@@ -1,0 +1,50 @@
+﻿@using Dominio
+@model Dominio.Usuario
+
+<div class="perfil-page">
+    <div class="perfil-container">
+        <h2 class="perfil-titulo">Tus Datos</h2>
+
+        <div class="perfil-info">
+            <p><strong>Rol:</strong> @Model.Rol</p>
+            <p><strong>Nombre:</strong> @Model.Nombre @Model.Apellido</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>Fecha de incorporación:</strong> @Model.FechaDeIncorporacion.ToString("dd/MM/yyyy")</p>
+            <p><strong>Equipo:</strong> @Model.Equipo.Nombre</p>
+            <p><strong>Gastos del Mes:</strong> $@ViewBag.GastoDelMes.ToString("0.00")</p>
+        </div>
+    </div>
+
+    @if (Model.Rol == Rol.Gerente)
+        {   
+        <br>
+           <div class="perfil-container">
+            <h2 class="perfil-titulo">Tu Equipo</h2>
+             <div class="perfil-info">
+
+                <table class="table">
+                 <thead>
+                    <tr>
+                       <th>Nombre</th>
+                       <th>Apellido</th>
+                       <th>Email</th>
+                    </tr>
+                 </thead>
+                    <tbody>
+                        @foreach (Usuario u in ViewBag.Miembros)
+                          {
+                            if (Model.Equipo.Nombre == u.Equipo.Nombre && u.Id != Model.Id)
+                          {
+                           <tr>
+                            <td>@u.Nombre</td>
+                            <td>@u.Apellido</td>
+                            <td>@u.Email</td>
+                           </tr>
+                           }
+                          }
+                    </tbody>
+                 </table>
+              </div>
+             </div>
+          }
+</div>

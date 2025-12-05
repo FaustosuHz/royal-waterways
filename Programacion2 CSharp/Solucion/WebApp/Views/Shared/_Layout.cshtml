@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] MoneyTracker</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="d-flex flex-column" style="min-height: 100vh;">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow">
+            <div class="container-fluid">
+
+                <a class="navbar-brand text-white"
+                   asp-controller="Home" asp-action="Index">
+                    MoneyTracker
+                </a>
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (Context.Session.GetInt32("idUsuarioLogueado") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Usuario" asp-action="Index">Mi Perfil</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Pago" asp-action="Index">Mis Pagos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Pago" asp-action="Create">Cargar Pago</a>
+                            </li>
+
+                            @if (Context.Session.GetString("rolUsuario") == "Gerente")
+                                {
+                                    <li class="nav-item">
+                                     <a class="nav-link text-white" asp-controller="Pago" asp-action="Lista">Pagos del equipo</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                     <a class="nav-link text-white" asp-controller="Gasto" asp-action="Index">Gastos</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                     <a class="nav-link text-white" asp-controller="Gasto" asp-action="Create">Cargar Gasto</a>
+                                    </li>
+                                }
+
+                            <li class="nav-item ms-auto me-3">
+                                <a class="nav-link text-white d-sm-none" asp-controller="Usuario" asp-action="Logout">
+                                    Logout
+                                </a>
+
+                                <a class="btn btn-light d-none d-sm-inline-block"
+                                   asp-controller="Usuario" asp-action="Logout">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="flex-grow-1 pb-3">
+        @RenderBody()
+    </main>
+
+    <footer class="footer mt-auto">
+        <div class="container text-center text-white py-2" style="background-color:#1a66cc;">
+            © 2025 - MoneyTracker - P2 Fausto A
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

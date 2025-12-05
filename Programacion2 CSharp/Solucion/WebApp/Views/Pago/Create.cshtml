@@ -1,0 +1,76 @@
+﻿@using Dominio
+@model IEnumerable<Dominio.Gasto>
+
+@{
+    string tipoPago = Context.Request.Query["tipoPago"];
+    if (string.IsNullOrEmpty(tipoPago)) tipoPago = "unico";
+}
+
+<div class="pago-page pago-create">
+    <div class="pago-container">
+
+        <h2 class="pago-titulo">Cargar Pago</h2>
+
+        <form method="get" class="tipo-pago-form">
+            @if (tipoPago == "unico")
+            {
+                <button type="submit" name="tipoPago" value="unico" class="btn-seleccionado">Unico</button>
+                <button type="submit" name="tipoPago" value="recurrente">Recurrente</button>
+            }
+            else
+            {
+                <button type="submit" name="tipoPago" value="unico">Unico</button>
+                <button type="submit" name="tipoPago" value="recurrente" class="btn-seleccionado">Recurrente</button>
+            }
+        </form>
+
+        <form method="post" class="form-pago">
+            <input type="hidden" name="tipoPago" value="@tipoPago"/>
+
+            <label>Tipo de Gasto:*</label>
+            <select name="selectGasto">
+                <option value="-1">Seleccione tipo de Gasto</option>
+                @foreach (Gasto g in Model)
+                {
+                    <option value="@g.Id">@g.Nombre</option>
+                }
+            </select>
+
+            <label>Metodo de Pago:*</label>
+            <select name="metodoPago">
+                <option value="-1">Seleccione metodo de Pago</option>
+                @foreach (MetodoDePago m in Enum.GetValues(typeof(Dominio.MetodoDePago)))
+                {
+                    <option value="@m">@m</option>
+                }
+            </select>
+
+            <label>Monto:*</label>
+            <input type="number" name="Monto" required/>
+
+            <label>Descripción:*</label>
+            <input type="text" name="descripcion" maxlength="30" required/>
+
+            @if (tipoPago == "unico")
+            {
+                <label>Número de recibo:*</label>
+                <input type="number" name="NumeroDeRecibo" maxlength="15" required/>
+
+                <label>Fecha de pago:*</label>
+                <input type="date" name="FechaPago" required/>
+            }
+            else if (tipoPago == "recurrente")
+            {
+                <label>Fecha inicial:*</label>
+                <input type="date" name="FechaInicial" required/>
+
+                <label>Fecha final:</label>
+                <input type="date" name="FechaFinal" />
+            }
+
+            <input type="submit" value="Guardar"/>
+        </form>
+
+        <p>@ViewBag.Msg</p>
+    </div>
+</div>
