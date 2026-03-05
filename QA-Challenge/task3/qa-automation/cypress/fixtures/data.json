@@ -1,0 +1,81 @@
+{
+  "login": {
+    "validUser": {
+      "username": "user",
+      "password": "user"
+    },
+    "invalidUser": {
+      "username": "admin$443",
+      "password": "wrongpass44323"
+    },
+    "email": {
+      "correctEmail": "testEmail@gmail.com",
+      "wrongEmail": "wrongEmail44323"
+    }
+  },
+
+  "registration": {
+    "validUser": {
+      "username": "newUser",
+      "email": "newUser@gmail.com",
+      "password": "Password123!",
+      "confirmPassword": "Password123!"
+    }
+  },
+
+  "folders": {
+    "validFolder": {
+      "name": "MyFolder"
+    },
+    "invalidFolder": {
+      "emptyName": "",
+      "tooLongName": "FolderNameThatIsWayTooLongToBeValidAndShouldFailValidation1234567890"
+    },
+    "updateFolder": {
+      "oldName": "MyFolder",
+      "newName": "UpdatedFolder"
+    },
+    "deleteFolder": {
+      "name": "UpdatedFolder"
+    }
+  },
+
+  "todos": {
+    "validTodo": {
+      "title": "Test Todo",
+      "description": "This is a test todo item",
+      "folder": "MyFolder"
+    },
+    "todoWithoutFolder": {
+      "title": "Todo No Folder",
+      "description": "Todo item without a folder"
+    },
+    "updateTodo": {
+      "oldTitle": "Old Todo",
+      "newTitle": "Updated Todo",
+      "description": "Updated description",
+      "folder": "MyFolder"
+    },
+    "deleteTodo": {
+      "title": "Todo To Delete",
+      "description": "This todo will be deleted",
+      "folder": "MyFolder"
+    }
+  },
+
+  "settings": {
+    "validUpdate": {
+      "firstName": "NewFirstName",
+      "lastName": "NewLastName",
+      "email": "updatedEmail@gmail.com"
+    },
+    "invalidEmail": {
+      "firstName": "NewFirstName",
+      "lastName": "NewLastName",
+      "email": "invalidEmail@@"
+    },
+    "partialUpdate": {
+      "firstName": "OnlyFirstName"
+    }
+  }
+}
