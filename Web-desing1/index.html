@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Facilitamos la busqueda de viajes por toda America y la compra online de pasajes">
+    <meta name="keywords" content="viajes, america, destino, ofertas, viaje sencillo">
+    <meta name="robots" content="NOINDEX">
+    <link rel="stylesheet" href="estilos.css">
+    <title>ViajeConUnClick</title>
+    <link rel="icon" href="img/pagina/logoFavicon.png">
+</head>
+
+<body>
+
+<header>
+    <div class="logo"><a href="index.html"><img src="img/pagina/logo.png" alt="logo de Viaje con un click" title="Volver al Inicio"></a></div>
+    <nav>   
+        <ul>
+        <li><a href="#sobreNosotros">Sobre Nosotros</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#destinos">Destinos</a></li>
+        <li><a href="#cotizacion">Cotización</a></li>
+        </ul>   
+    </nav>
+</header> 
+
+<main>
+
+<section id="principal">
+    <div>
+        <strong><h1>El viaje que siempre quisiste a un solo click</h1></strong>
+            <p>Conoce todos los lugares en los que te daremos la facilidad de estar...</p>
+            <a href="">VER MÁS</a>
+        </div>
+</section>
+
+<section id="sobreNosotros">
+<div>
+    <h2>Sobre Nosotros</h2>
+    <p>Ampliamente reconocidos y con mucho recorrido hecho, nos enfocamos en brindar un servicio personalizado para cada una de las personas que viaja con nosotros, garantizando que puedan tener la mejor experiencia posible y recuerdos que perduren toda la vida.</p>
+    <p>Ofrecemos viajes a las principales capitales turísticas de América, ciudades con un atractivo sorprendente y a precios accesibles.</p>
+</div>    
+
+<figure>
+    <img src="img/pagina/quienesSomosImg.jpg" alt="Dos turistas contentos">
+</figure>
+</section>
+
+<section id="beneficios">
+    <h2>Beneficios</h2>
+    <article>
+        <img src="img/pagina/itinerarioPersonalizado.jpg" alt="calendario">
+        <h3>Itinerario Personalizado</h3>
+        <p>Optimiza el tiempo y aprovechen al máximo cada destino.</p>
+    </article>
+    <article>
+        <img src="img/pagina/recompensa.jpg" alt="cliente contenta">
+        <h3>Recompensas Exclusivas</h3>
+        <p>Acumula puntos que podrás utilizar para descuentos en futuros viajes.</p>
+    </article>
+    <article>
+        <img src="img/pagina/comunicacion.jpg" alt="persona comunicandose con smartphone">
+        <h3>Comunicación Constante</h3>
+        <p>Sin importar el horario, siempre habrá alguien disponible para ti.</p>
+    </article>
+    <article>
+        <img src="img/pagina/alojamiento.jpg" alt="alojamiento y persona contenta de estar ahi">
+        <h3>Alojamiento</h3>
+        <p>En escalas prolongadas o en tu destino, siempre tendras donde quedarte.</p>
+    </article>
+</section>
+
+<section id="destinos">
+<div><h2>Destinos más visitados</h2></div>
+    
+    <article class="destino1" alt="imagen de buenos aires">
+        <h3>Buenos Aires</h3>
+        <a href="">Ver más</a>
+    </article>
+
+    <article class="destino2" alt="imagen de cusco">
+        <h3>Cusco</h3>
+        <a href="">Ver más</a>
+    </article>
+
+    <article class="destino3" alt="imagen de oaxaca">
+        <h3>Oaxaca</h3>
+        <a href="">Ver más</a>
+    </article>
+
+    <article class="destino4" alt="imagen de guanacaste">
+        <h3>Guanacaste</h3>
+        <a href="">Ver más</a>
+    </article>
+
+    <article class="destino5" alt="imagen de santiago">
+        <h3>Santiago</h3>
+        <a href="">Ver más</a>
+    </article>
+
+    <article class="destino6" alt="imagen de medellín">
+        <h3>Medellín</h3>
+        <a href="">Ver más</a>
+    </article>
+</section>
+
+<section id="cotizacion">
+
+    <form action="procesa.php" method="GET" autocomplete="on">
+        <h2>Cotización personalizada</h2>
+        <p>Envianos la siguente información y te harémos llegar una cotización correspondiente a tus preferencias, los campos marcados con (*) son obligatorios.</p>
+
+            <label for="nombre">Nombre Completo *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Juan Perez" required>
+
+            <label for="mail">Email *</label>
+            <input type="email" id="mail" name="mail" placeholder="ejemplo@email.com" required>  
+            
+            <label for="destino">Destino *</label>
+            <select id="destinoSelect" name="destinoSelect" required>
+                <option value>Seleccione destino</option>
+
+                <optgroup label="Norte America">
+                    <option value="chicago">Chicago</option>
+                    <option value="losAngeles">Los Ángeles</option>
+                    <option value="oaxaca">Oaxaca</option>
+                    <option value="toronto">Toronto</option>
+                </optgroup>
+
+                <optgroup label="Centro America">
+                    <option value="granada">Granada</option>
+                    <option value="guanacasTe">Guanacaste</option>
+                    <option value="managua">Managua</option>
+                    <option value="sanJose">San José</option>
+                </optgroup>
+
+                <optgroup label="Sudamérica">
+                    <option value="buenosAires">Buenos Aires</option>
+                    <option value="cusco">Cusco</option>
+                    <option value="medellin">Medellín</option>
+                    <option value="santiago">Santiago</option>
+                </optgroup>
+            </select>
+
+            <label for="moneda">Moneda de Cotización *</label>
+            <input type="radio" name="moneda" id="dolar" value="dolar">
+            <label for="dolar">Dolar</label>
+            <input type="radio" name="moneda" id="euro" value="euro">
+            <label for="euro">Euro</label>
+            <input type="radio" name="moneda" id="pesoUruguayo" value="pesoUruguayo">
+            <label for="pesoUruguayo">Peso Uruguayo</label>
+
+           
+            <label for="comentarios">Comentarios</label>
+            <textarea name="comentarios" id="comentarios" placeholder="Información adicional para la cotización"></textarea>
+
+            <input type="checkbox" name="recibirInfo" id="recibirInfo" value="1">
+            <label for="recibirInfo"> Acepto recibir noticias sobre los últimos paquetes y promociones</label>
+
+            <input type="submit" value="Enviar">
+    </form>
+
+<div class="tabla">
+    <h2>Tipo de cambio actual</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>Compra</th>
+            <th>Venta</th>
+        </tr>
+        <tr>
+            <td>Dolar</td>
+            <td>$ 40,35</td>
+            <td>$ 42,85</td>
+        </tr>
+        <tr>
+            <td>Euro</td>
+            <td>$ 42,93</td>
+            <td>$ 47,93</td>
+        </tr>
+        <tr>
+            <td>Peso argentino</td>
+            <td>$ 0,024</td>
+            <td>$ 0,20</td>
+        </tr>
+        <tr>
+            <td colspan="3">Última actualización: 4/11/2024</td>
+        </tr>
+    </table>
+</div>
+</section>
+
+</main>
+
+<footer>
+    <h3>Fausto Aristimuño - 344072 - 2024</h3>
+</footer>
+
+</body>
+</html>

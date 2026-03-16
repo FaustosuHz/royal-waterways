@@ -1,0 +1,701 @@
+/* ---General--- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    color:#7579E7;
+}
+
+a:hover {
+    color: #5c6ee2
+}
+
+a:visited {
+    color: #4a4ec9
+}
+
+body {
+    background-image: url(img/pagina/prefectBlue.jpg); background-size: cover;
+    font-family: "Calibri", sans-serif;
+}
+
+
+/* ---Header--- */
+
+header {
+    background-color: #6c70e7;
+    border-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 115px;
+    border-bottom: 4px solid #4a4ec9 ;
+}
+
+nav {
+    margin-right: 15px;
+}
+
+nav ul {
+    width: 700px;
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    flex: 1;
+}
+
+nav ul li a {
+    display: block;
+    color: #B9FFFC;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height:40px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.8s;
+}
+
+nav ul li a:hover {
+    background-color: #4a4ec9;
+    color: rgb(255, 255, 255);
+    border-top-left-radius:8px;
+    border-bottom-left-radius:8px;
+}
+
+nav ul li a:visited {
+    color: rgb(255, 255, 255);
+}
+
+.logo img{
+    margin: 5px;
+    margin-left: 60px;
+    width: 210px;
+    height: 90px;
+}
+
+
+/* ---Secciones--- */
+
+#principal {
+    background-image: url(img/pagina/cover.jpg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 740px;
+    background-size: cover;
+    background-position: center;
+}
+
+#principal div {
+    display: block;
+    width: 800px;
+    text-align: center;
+    justify-content: center;
+}
+
+#principal div h1{
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 70px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+#principal div p{
+    color: white;
+    font-size: 30px;
+    font-weight: 350;
+    margin-bottom: 25px;
+}
+
+#principal div a{
+    display: block;
+    background-color: #3c41c8;
+    color: #B9FFFC;
+    width: 170px;
+    height: 60px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom: 90px;
+    font-size: 20px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    line-height:30px;
+    border-radius: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.9s;
+}
+
+#principal div a:hover {
+    background-color: #6165db;
+    color: #B9FFFC;
+}
+
+#sobreNosotros {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 600px;
+    padding: 100px;
+}
+
+#sobreNosotros img {
+    border-radius: 35px;
+    width: 650px;
+}
+
+#sobreNosotros div {
+    width: 750px;
+    height: 445px;
+    text-align: center;
+    margin-right: 80px;
+}
+
+#sobreNosotros div h2{
+    color: #3f0d54;
+    font-weight: 600;
+    font-size: 45px;
+    text-align: left;
+}
+
+#sobreNosotros div p{
+    color: #3f0d54;
+    font-size: 28px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+#beneficios {
+    background-color: #5c60e0;
+    height: 620px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 53px;
+}
+
+#beneficios h2{
+    width: 100%;
+    height: 80px;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 45px;
+    letter-spacing: 1px;
+    text-align: center;
+    line-height: 80px;
+}
+
+#beneficios article{
+    color: #3f0d54;
+    background-color: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 280px;
+    height: 390px;
+    padding: 15px;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 50px;
+    transition: all 0.9s;
+}
+
+#beneficios article img{
+    border-radius: 60%;
+    width: 100%;
+    height: 245px;
+}
+
+#beneficios article h3{
+    color: rgb(255, 255, 255);
+    margin: 5px 0;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+#beneficios article p{
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+
+#destinos {
+    background-image: url(img/pagina/prefectBlue.jpg); background-size: cover;
+    padding: 80px;
+    height: 800px;
+    align-content: center;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+#destinos div {
+    height: 30px;
+    margin-bottom: 35px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+}
+
+#destinos div h2{
+    color: #f8f8f8;
+    font-size: 40px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+#destinos article{
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+
+#destinos article h3{
+    width: 100%;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.destino1 {
+    background-image: url(img/lugares/buenosAires.jpg); background-size: cover;
+    display: flex;
+    border-top-left-radius: 20px;
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding-right: 300px;
+}
+
+.destino1 h3{
+   color: #4e075e;
+   letter-spacing: 1px;
+   border-top-left-radius: 20px;
+   border-bottom-right-radius: 50px;
+   width: 20px;
+   height: 50px;
+   line-height: 50px;
+   text-indent: 30px;
+   background-image: url(img/pagina/flag.png); background-size: cover;
+}
+
+.destino1 a{
+    background-image: url(img/pagina/flag.png); background-size: cover;
+    letter-spacing: 0.5px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #4e075e;
+    align-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 210px;
+    width: 125px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 30px;
+ }
+
+.destino2 {
+    background-image: url(img/lugares/cusco.jpg); object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    padding-right: 130px;
+}
+
+.destino2 h3{
+    color: #4e075e;
+    letter-spacing: 1px;
+    border-bottom-right-radius: 50px;
+    width: 20px;
+    height: 50px;
+    line-height: 45px;
+    text-indent: 30px;
+    background-image: url(img/pagina/flag.png); background-size: cover;
+ }
+
+ .destino2 a{
+    background-image: url(img/pagina/flag.png); background-size: cover;
+    letter-spacing: 0.5px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #4e075e;
+    align-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 210px;
+    width: 125px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 30px;
+ }
+
+ .destino3 {
+    background-image: url(img/lugares/oaxaca.jpg); background-size:cover;
+    display: flex;
+    flex-direction: column;
+    padding-right: 130px;
+    border-top-right-radius: 20px;
+}
+
+.destino3 h3{
+    color: #4e075e;
+    letter-spacing: 1px;
+    border-bottom-right-radius: 50px;
+    width: 20px;
+    height: 50px;
+    line-height: 45px;
+    text-indent: 30px;
+    background-image: url(img/pagina/flag.png); background-size: cover;
+ }
+
+ .destino3 a{
+    background-image: url(img/pagina/flag.png); background-size: cover;
+    letter-spacing: 0.5px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #4e075e;
+    align-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 210px;
+    width: 125px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 30px;
+ }
+
+ .destino4 {
+    background-image: url(img/lugares/guanacaste.jpg); object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 20px;
+    padding-right: 130px;
+}
+
+.destino4 h3{
+    color: #4e075e;
+    letter-spacing: 1px;
+    border-bottom-right-radius: 50px;
+    width: 20px;
+    height: 50px;
+    line-height: 45px;
+    text-indent: 30px;
+    background-image: url(img/pagina/flag.png); background-size: cover;
+ }
+
+ .destino4 a{
+    background-image: url(img/pagina/flag.png); background-size: cover;
+    letter-spacing: 0.5px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: #4e075e;
+    align-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 210px;
+    width: 125px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 30px;
+ }
+
+.destino5 {
+    background-image: url(img/lugares/santiago.jpeg); background-size:cover;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: column;
+    padding-right: 300px;
+}
+
+.destino5 h3{
+    color: #4e075e;
+    letter-spacing: 1px;
+    border-bottom-right-radius: 50px;
+    width: 20px;
+    height: 50px;
+    line-height: 50px;
+    text-indent: 30px;
+    background-image: url(img/pagina/flag.png); background-size: cover;
+ }
+ 
+ .destino5 a{
+     background-image: url(img/pagina/flag.png); background-size: cover;
+     letter-spacing: 0.5px;
+     border-bottom-right-radius: 20px;
+     border-top-right-radius: 20px;
+     color: #4e075e;
+     align-content: flex-end;
+     font-size: 20px;
+     font-weight: 700;
+     margin-top: 210px;
+     width: 125px;
+     height: 35px;
+     line-height: 35px;
+     text-indent: 30px;
+}
+
+  .destino6 {
+    background-image: url(img/lugares/medellin.jpg); background-size:cover;
+    display: flex;
+    flex-direction: column;
+    padding-right: 100px;
+    border-bottom-right-radius: 20px;
+}
+
+.destino6 h3{
+    color: #4e075e;
+    letter-spacing: 1px;
+    border-bottom-right-radius: 50px;
+    width: 20px;
+    height: 50px;
+    line-height: 45px;
+    text-indent: 30px;
+    background-image: url(img/pagina/flag.png); background-size: cover;
+}
+
+ .destino6 a{
+    background-image: url(img/pagina/flag.png); background-size: cover;
+    letter-spacing: 0.5px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #4e075e;
+    align-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 210px;
+    width: 125px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 30px;
+}
+
+ #destinos article a:hover{
+    color: #3c41c8;
+}
+
+#cotizacion {
+    background-color: rgb(255, 255, 255);
+    height: 850px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form {
+    width: 600px;
+    height: 700px;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+form h2{
+    color: black;
+    width: 100%;
+    font-size: 35px;
+    font-weight: 548;
+    line-height: 30px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 18px;
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid rgb(129, 129, 252);
+}
+
+input:focus {
+    background-color: rgb(238, 235, 235);
+    border: 2px solid blue;
+    outline: none;
+}
+
+form p{
+
+    margin-bottom: 30px;
+}
+
+label {
+    color: black;
+    font-size: 18px;
+    font-weight: 580;
+    margin-bottom: 4px;
+}
+
+label, select {
+    display: block;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+}
+
+#destinoSelect {
+    color: #888888;
+    border: 1px solid rgb(129, 129, 252);
+    display: flex;
+    height: 40px; 
+    padding: 5px;
+    margin-bottom: 19px;
+}
+
+#destinoSelect:focus{
+    background-color: rgb(238, 235, 235);
+    border: 2px solid blue;
+    outline: none;
+    display: flex;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 19px;
+}
+
+input[type="radio"]{
+    width: 16px;
+    height: 16px;
+    margin-top: 6px;
+}
+
+input[type="radio"]{
+    width: 16px;
+    height: 16px;
+    margin-top: 6px;
+}
+
+input[type="radio"] + label{
+    display: inline;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 5px;
+    margin-left: 3px;
+    line-height: 16px;
+}
+
+textarea {
+    display: block;
+    font-family: "Calibri", sans-serif;
+    border: 1px solid rgb(129, 129, 252);
+    font-size: 16px;
+    width: 100%;
+    height: 119px;
+    margin-top: 3px;
+    margin-bottom: 18px;
+    padding: 5px;
+    resize: none;
+}
+
+textarea:focus {
+    background-color: rgb(238, 235, 235);
+    border: 2px solid blue;
+    outline: none;
+}
+
+input[type="checkbox"]{
+    width: 16px;
+    height: 16px;
+    margin-top: 6px;
+}
+
+input[type="checkbox"] + label{
+    display: inline;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 5px;
+    margin-left: 3px;
+    line-height: 16px;
+}
+
+input[type="submit"]{
+    display: block;
+    cursor: pointer;
+    width: 95px;
+    height: 45px;
+    background-color: #3c41c8;
+    color: #B9FFFC;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    line-height:15px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.9s;
+}
+
+input[type="submit"]:hover {
+    background-color: #6f73dd;
+    color: #B9FFFC;
+}
+
+.tabla{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(129, 129, 252);
+    border-radius: 5px;
+    width: 480px;
+    height: 380px;
+    padding: 30px;
+    margin-right: 120px;
+}
+
+.tabla h2{
+    width: 100%;
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+table{
+    width: 100%;
+    height: 300px;
+    border-spacing: 4px;
+}
+
+tr,th,td {
+    text-align: center;
+}
+
+td{
+    background-color: rgb(238, 235, 235);
+}
+
+td:first-child{
+    color: #3f0d54;
+    font-weight: 600;
+}
+
+
+/* ---Footer--- */
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: #5c60e0;
+}
+
+footer h3{
+    color: #B9FFFC;
+    text-align: center;
+    letter-spacing: 1px;
+}
