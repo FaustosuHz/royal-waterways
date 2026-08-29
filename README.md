@@ -6,3 +6,5 @@ In this repository I plan to upload projects and things I learn throughout my ca
 I’d also like to create a video for each project to showcase the learning process behind it, which I believe is the most valuable part.
 
 Fausto
+
+<img width="644" height="812" alt="image" src="https://github.com/user-attachments/assets/a4d5e3dd-2f38-4af2-91fe-408021b87fb8" />
