@@ -95,7 +95,7 @@ namespace LogicaAplicacion.CasosUso.Observaciones
                 "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
             );
 
-            request.Headers.Add("X-goog-api-key", "poner apikey aca");
+            //apikey
 
             request.Content = new StringContent(
                 JsonSerializer.Serialize(requestBody),
