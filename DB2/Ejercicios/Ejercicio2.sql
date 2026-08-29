@@ -1,0 +1,277 @@
+USE OUTATIME_INC
+GO
+
+-------------------------------------------------
+-- PAISES
+-------------------------------------------------
+INSERT INTO paises VALUES (1,'Estados Unidos')
+INSERT INTO paises VALUES (2,'Japon')
+INSERT INTO paises VALUES (3,'Francia')
+INSERT INTO paises VALUES (4,'Brasil')
+INSERT INTO paises VALUES (5,'Alemania')
+INSERT INTO paises VALUES (6,'Australia')
+INSERT INTO paises VALUES (7,'Canada')
+INSERT INTO paises VALUES (8,'Italia')
+INSERT INTO paises VALUES (9,'España')
+INSERT INTO paises VALUES (10,'Uruguay')
+
+-------------------------------------------------
+-- OFICINAS
+-------------------------------------------------
+INSERT INTO oficinas VALUES (1,'Hill Valley Central',1,'California 1985')
+INSERT INTO oficinas VALUES (2,'Tokyo Future',2,'Shibuya Neo District')
+INSERT INTO oficinas VALUES (3,'Paris Temporal',3,'Rue Chronos 44')
+INSERT INTO oficinas VALUES (4,'Rio Time Port',4,'Copacabana 2200')
+INSERT INTO oficinas VALUES (5,'Berlin Quantum',5,'Alexanderplatz 88')
+INSERT INTO oficinas VALUES (6,'Sydney Flux Center',6,'George Street 12')
+INSERT INTO oficinas VALUES (7,'Toronto SpaceTime',7,'Bloor Street 77')
+INSERT INTO oficinas VALUES (8,'Roma Antica',8,'Via Imperio 14')
+INSERT INTO oficinas VALUES (9,'Madrid Delta Base',9,'Gran Via 2015')
+INSERT INTO oficinas VALUES (10,'Montevideo TimeHub',10,'18 de Julio 1985')
+INSERT INTO oficinas VALUES (11,'Silicon Valley Lab',1,'Palo Alto Future')
+INSERT INTO oficinas VALUES (12,'Kyoto Historical',2,'Distrito Antiguo')
+INSERT INTO oficinas VALUES (13,'Marsella Gateway',3,'Puerto Temporal')
+INSERT INTO oficinas VALUES (14,'Sao Paulo Nexus',4,'Avenida Paulista')
+INSERT INTO oficinas VALUES (15,'Munich Core',5,'Munich Zentrum')
+INSERT INTO oficinas VALUES (16,'Punta Carretas Time',10,'Rambla Republica')
+
+-------------------------------------------------
+-- MODELO VEHICULO
+-------------------------------------------------
+INSERT INTO modeloVehiculo VALUES (1,'DeLorean DMC-12',12.10,0,'Plutonio')
+INSERT INTO modeloVehiculo VALUES (2,'Hover Cruiser X',24.20,1,'H2O')
+INSERT INTO modeloVehiculo VALUES (3,'Temporal Van',36.30,0,'Plutonio')
+INSERT INTO modeloVehiculo VALUES (4,'Quantum Speeder',48.40,1,'Plutonio')
+INSERT INTO modeloVehiculo VALUES (5,'Retro Classic',60.50,0,'H2O')
+INSERT INTO modeloVehiculo VALUES (6,'Flux Transporter',72.60,1,'H2O')
+INSERT INTO modeloVehiculo VALUES (7,'Time Bike',84.70,0,'Plutonio')
+INSERT INTO modeloVehiculo VALUES (8,'Galaxy Runner',96.80,1,'Plutonio')
+
+-------------------------------------------------
+-- VEHICULOS
+-------------------------------------------------
+
+INSERT INTO vehiculos VALUES ('OUT1985',1,1,1)
+INSERT INTO vehiculos VALUES ('MCFLY88',1,2,1)
+INSERT INTO vehiculos VALUES ('TIME2015',2,3,2)
+INSERT INTO vehiculos VALUES ('DOC1955',3,4,3)
+INSERT INTO vehiculos VALUES ('FLUX777',4,5,4)
+INSERT INTO vehiculos VALUES ('PLUTO99',5,6,5)
+INSERT INTO vehiculos VALUES ('HOVER01',6,2,6)
+INSERT INTO vehiculos VALUES ('GIGA500',7,7,7)
+INSERT INTO vehiculos VALUES ('ROMA300',8,8,8)
+INSERT INTO vehiculos VALUES ('MADRID8',9,3,9)
+INSERT INTO vehiculos VALUES ('NEXUS12',1,4,10)
+INSERT INTO vehiculos VALUES ('TOKYO77',2,5,11)
+INSERT INTO vehiculos VALUES ('RETRO44',3,6,12)
+INSERT INTO vehiculos VALUES ('BRAZIL9',4,7,13)
+INSERT INTO vehiculos VALUES ('DELTA66',5,8,14)
+INSERT INTO vehiculos VALUES ('PULSE22',10,1,15)
+INSERT INTO vehiculos VALUES ('FUTURE55',7,8,16)
+INSERT INTO vehiculos VALUES ('QUANT11',8,2,2)
+INSERT INTO vehiculos VALUES ('AAA111',1,1,1)
+INSERT INTO vehiculos VALUES ('BBB222',1,2,2)
+INSERT INTO vehiculos VALUES ('CCC333',1,3,3)
+INSERT INTO vehiculos VALUES ('DDD444',1,4,4)
+
+-------------------------------------------------
+-- DESTINOS
+-------------------------------------------------
+
+INSERT INTO destinos VALUES (1,'Hill Valley 1985','1985-10-26')
+INSERT INTO destinos VALUES (2,'Hill Valley 2015','2015-10-21')
+INSERT INTO destinos VALUES (3,'Ancient Rome','1800-06-15')
+INSERT INTO destinos VALUES (4,'Wild West','1885-09-02')
+INSERT INTO destinos VALUES (5,'Moon Landing','1969-07-20')
+INSERT INTO destinos VALUES (6,'French Revolution','1789-07-14')
+INSERT INTO destinos VALUES (7,'Ancient Egypt','1753-01-01')
+INSERT INTO destinos VALUES (8,'Neo Tokyo','2200-03-10')
+INSERT INTO destinos VALUES (9,'Mars Colony','2300-11-01')
+INSERT INTO destinos VALUES (10,'Cyberpunk New York','2099-08-19')
+INSERT INTO destinos VALUES (11,'Berlin 1945','1945-05-08')
+INSERT INTO destinos VALUES (12,'Atlantis','1801-04-11')
+INSERT INTO destinos VALUES (13,'Renaissance Florence','1802-09-13')
+INSERT INTO destinos VALUES (14,'Neo Seoul','2400-02-17')
+INSERT INTO destinos VALUES (15,'Madrid 1605','1803-05-25')
+INSERT INTO destinos VALUES (16,'Jurassic Expedition','1804-01-01')
+INSERT INTO destinos VALUES (17,'Montevideo 1930','1930-07-30')
+INSERT INTO destinos VALUES (18,'Silicon Valley 2077','2077-05-18')
+INSERT INTO destinos VALUES (19,'Buenos Aires 1810','1810-05-25')
+INSERT INTO destinos VALUES (20,'Mars Colony One','2150-08-01')
+
+-------------------------------------------------
+-- CHOFERES
+-------------------------------------------------
+INSERT INTO choferes VALUES (1,'McFly','Marty',1,'1968-06-12',1)
+INSERT INTO choferes VALUES (2,'Brown','Emmett',1,'1940-03-01',1)
+INSERT INTO choferes VALUES (3,'Tanaka','Hiro',2,'1975-09-22',2)
+INSERT INTO choferes VALUES (4,'Dubois','Pierre',3,'1980-11-10',3)
+INSERT INTO choferes VALUES (5,'Oliveira','Lucas',4,'1988-01-14',4)
+INSERT INTO choferes VALUES (6,'Muller','Hans',5,'1970-02-17',5)
+INSERT INTO choferes VALUES (7,'Smith','Oliver',6,'1990-04-21',6)
+INSERT INTO choferes VALUES (8,'Johnson','Ethan',7,'1985-12-30',7)
+INSERT INTO choferes VALUES (9,'Ricci','Marco',8,'1978-08-09',8)
+INSERT INTO choferes VALUES (10,'Garcia','Luis',9,'1982-07-15',9)
+INSERT INTO choferes VALUES (11,'Pereira','Santiago',10,'1991-10-11',10)
+INSERT INTO choferes VALUES (12,'Wilson','Kate',1,'1989-06-06',11)
+INSERT INTO choferes VALUES (13,'Yamamoto','Akira',2,'1977-09-09',12)
+INSERT INTO choferes VALUES (14,'Moreau','Luc',3,'1984-03-13',13)
+INSERT INTO choferes VALUES (15,'Costa','Felipe',4,'1992-02-02',14)
+INSERT INTO choferes VALUES (16,'Schmidt','Karl',5,'1981-01-01',15)
+
+-------------------------------------------------
+-- CLIENTES
+-------------------------------------------------
+INSERT INTO clientes VALUES (1,'Wayne','Bruce',1,90000)
+INSERT INTO clientes VALUES (2,'Kent','Clark',1,85000)
+INSERT INTO clientes VALUES (3,'Stark','Tony',1,120000)
+INSERT INTO clientes VALUES (4,'Romanoff','Natasha',7,70000)
+INSERT INTO clientes VALUES (5,'Banner','Bruce',1,65000)
+INSERT INTO clientes VALUES (6,'Parker','Peter',1,30000)
+INSERT INTO clientes VALUES (7,'Prince','Diana',3,95000)
+INSERT INTO clientes VALUES (8,'Allen','Barry',1,72000)
+INSERT INTO clientes VALUES (9,'Danvers','Carol',6,88000)
+INSERT INTO clientes VALUES (10,'Odinson','Thor',5,150000)
+INSERT INTO clientes VALUES (11,'Maximoff','Wanda',4,60000)
+INSERT INTO clientes VALUES (12,'Rogers','Steve',1,91000)
+INSERT INTO clientes VALUES (13,'Romanov','Ivan',10,40000)
+INSERT INTO clientes VALUES (14,'Lopez','Camila',9,25000)
+INSERT INTO clientes VALUES (15,'Fernandez','Lucia',10,32000)
+
+-------------------------------------------------
+-- VIAJES
+-------------------------------------------------
+
+INSERT INTO viajes VALUES (1,1,1,'2025-01-01','2025-02-01',1,'2025-02-10',12000,'REALIZADO',1,'OUT1985')
+INSERT INTO viajes VALUES (2,1,1,'2025-01-15','2025-03-01',2,'2025-03-08',18000,'REALIZADO',2,'MCFLY88')
+INSERT INTO viajes VALUES (3,1,1,'2025-02-01','2025-04-01',3,'2025-04-15',25000,'REALIZADO',1,'OUT1985')
+INSERT INTO viajes VALUES (4,1,1,'2025-03-01','2025-05-01',4,'2025-05-12',30000,'REALIZADO',2,'MCFLY88')
+INSERT INTO viajes VALUES (5,1,1,'2025-04-01','2025-06-01',5,'2025-06-11',27000,'REALIZADO',1,'OUT1985')
+INSERT INTO viajes VALUES (6,1,1,'2025-05-01','2025-07-01',6,'2025-07-12',45000,'REALIZADO',2,'MCFLY88')
+INSERT INTO viajes VALUES (7,1,1,'2025-06-01','2025-08-01',7,'2025-08-12',47000,'REALIZADO',1,'OUT1985')
+
+INSERT INTO viajes VALUES (8,2,2,'2025-01-10','2025-02-10',8,'2025-02-15',16000,'REALIZADO',3,'TIME2015')
+INSERT INTO viajes VALUES (9,2,2,'2025-02-12','2025-03-10',9,'2025-03-15',21000,'REALIZADO',3,'TIME2015')
+INSERT INTO viajes VALUES (10,2,2,'2025-03-15','2025-04-10',10,'2025-04-15',22000,'REALIZADO',3,'QUANT11')
+
+INSERT INTO viajes VALUES (11,3,3,'2025-01-05','2025-02-20',11,'2025-02-28',19000,'REALIZADO',4,'DOC1955')
+INSERT INTO viajes VALUES (12,3,3,'2025-02-07','2025-03-25',12,'2025-04-01',26000,'REALIZADO',4,'DOC1955')
+INSERT INTO viajes VALUES (13,3,3,'2025-03-10','2025-04-28',13,'2025-05-06',32000,'REALIZADO',4,'DOC1955')
+INSERT INTO viajes VALUES (14,3,3,'2025-04-12','2025-05-30',14,'2025-06-10',37000,'REALIZADO',4,'DOC1955')
+
+INSERT INTO viajes VALUES (15,4,4,'2025-01-01','2025-02-01',15,'2025-02-05',12000,'CANCELADO',5,'FLUX777')
+INSERT INTO viajes VALUES (16,4,4,'2025-01-20','2025-03-01',16,'2025-03-06',18000,'SUSPENDIDO',5,'FLUX777')
+
+INSERT INTO viajes VALUES (17,5,5,'2025-02-01','2025-04-01',17,'2025-04-08',24000,'RESERVADO',6,'PLUTO99')
+INSERT INTO viajes VALUES (18,6,6,'2025-02-10','2025-04-12',18,'2025-04-20',29000,'EN VIAJE',7,'HOVER01')
+
+INSERT INTO viajes VALUES (19,7,7,'2025-03-01','2025-05-01',19,'2025-05-09',31000,'REALIZADO',8,'GIGA500')
+INSERT INTO viajes VALUES (20,8,8,'2025-03-11','2025-05-15',20,'2025-05-25',35000,'REALIZADO',9,'ROMA300')
+
+INSERT INTO viajes VALUES (21,9,9,'2025-04-01','2025-06-01',1,'2025-06-10',12000,'RESERVADO',10,'MADRID8')
+INSERT INTO viajes VALUES (22,10,10,'2025-04-05','2025-06-15',2,'2025-06-25',17000,'SUSPENDIDO',11,'NEXUS12')
+
+INSERT INTO viajes VALUES (23,11,11,'2025-05-01','2025-07-01',3,'2025-07-08',25000,'REALIZADO',12,'TOKYO77')
+INSERT INTO viajes VALUES (24,12,12,'2025-05-10','2025-07-12',4,'2025-07-20',21000,'REALIZADO',13,'RETRO44')
+
+INSERT INTO viajes VALUES (25,13,13,'2025-05-20','2025-07-25',5,'2025-08-05',26000,'CANCELADO',14,'BRAZIL9')
+INSERT INTO viajes VALUES (26,14,14,'2025-06-01','2025-08-01',6,'2025-08-10',30000,'RESERVADO',15,'DELTA66')
+
+INSERT INTO viajes VALUES (27,15,10,'2025-06-10','2025-08-15',7,'2025-08-20',20000,'REALIZADO',11,'NEXUS12')
+INSERT INTO viajes VALUES (28,15,10,'2025-06-15','2025-08-20',8,'2025-08-30',22000,'REALIZADO',11,'NEXUS12')
+
+INSERT INTO viajes VALUES (700,6,1,'2025-01-10','2026-03-01',11,'2026-03-05',1000,'REALIZADO',1,'AAA111')
+INSERT INTO viajes VALUES (701,7,1,'2025-01-11','2026-03-02',12,'2026-03-06',1200,'REALIZADO',2,'BBB222')
+INSERT INTO viajes VALUES (702,8,2,'2025-01-12','2026-03-03',13,'2026-03-07',1300,'REALIZADO',3,'BBB222')
+INSERT INTO viajes VALUES (703,9,2,'2025-01-13','2026-03-04',14,'2026-03-08',1500,'REALIZADO',4,'CCC333')
+INSERT INTO viajes VALUES (704,10,3,'2025-01-14','2026-03-05',15,'2026-03-09',1600,'REALIZADO',5,'CCC333')
+INSERT INTO viajes VALUES (705,11,3,'2025-01-15','2026-03-06',16,'2026-03-10',1700,'REALIZADO',6,'CCC333')
+INSERT INTO viajes VALUES (706,12,4,'2025-01-16','2026-03-07',17,'2026-03-11',1800,'REALIZADO',7,'DDD444')
+INSERT INTO viajes VALUES (707,13,4,'2025-01-17','2026-03-08',18,'2026-03-12',1900,'REALIZADO',8,'DDD444')
+INSERT INTO viajes VALUES (708,14,5,'2025-01-18','2026-03-09',19,'2026-03-13',2000,'REALIZADO',9,'DDD444')
+INSERT INTO viajes VALUES (709,15,5,'2025-01-19','2026-03-10',20,'2026-03-14',2100,'REALIZADO',10,'DDD444')
+
+INSERT INTO viajes VALUES (710,6,1,'2024-01-01','2026-07-01',1,'2026-07-05',3000,'RESERVADO',11,'AAA111')
+INSERT INTO viajes VALUES (711,7,2,'2024-01-02','2026-07-02',2,'2026-07-06',3500,'SUSPENDIDO',12,'BBB222')
+INSERT INTO viajes VALUES (712,8,3,'2024-01-03','2026-07-03',3,'2026-07-07',4000,'RESERVADO',13,'CCC333')
+INSERT INTO viajes VALUES (713,9,4,'2024-01-04','2026-07-04',4,'2026-07-08',4500,'SUSPENDIDO',14,'DDD444')
+
+
+INSERT INTO viajes VALUES (8000,2,1,'2026-01-01','2026-02-01',31,'2026-02-10',15000,'CANCELADO',2,'AAA111');
+
+
+
+
+
+--para el  trigger
+
+INSERT INTO viajes VALUES
+(91001, 1, 1, '2026-01-01 08:00:00','2026-01-02 08:00:00', 31,'2026-01-03 08:00:00', 1000,'REALIZADO', 1,'AAA111'),
+(91002, 1, 1, '2026-01-02 08:00:00','2026-01-03 08:00:00', 42,'2026-01-04 08:00:00', 1000,'REALIZADO', 1,'AAA111'),
+(91003, 1, 1, '2026-01-03 08:00:00','2026-01-04 08:00:00', 43,'2026-01-05 08:00:00', 1000,'REALIZADO', 1,'AAA111'),
+(91004, 1, 1, '2026-01-04 08:00:00','2026-01-05 08:00:00', 44,'2026-01-06 08:00:00', 1000,'REALIZADO', 1,'AAA111'),
+(91005, 1, 1, '2026-01-05 08:00:00','2026-01-06 08:00:00', 45,'2026-01-07 08:00:00', 1000,'REALIZADO', 1,'AAA111');
+
+INSERT INTO viajes VALUES (99998,2,1,'2026-01-10 08:00:00','2026-01-11 08:00:00',42,'2026-01-12 08:00:00',1000,'REALIZADO',1,'AAA111');
+INSERT INTO viajes VALUES (93000,2,1,'2026-01-01 08:00:00','2035-01-01 08:00:00',45,'2045-01-02 08:00:00',1000,'REALIZADO',1,'AAA111');
+
+
+
+
+-------------------------------------------------
+-- PAGOS
+-------------------------------------------------
+
+INSERT INTO pagos VALUES (1,1,'CREDITO',6,12000)
+INSERT INTO pagos VALUES (2,2,'DEBITO',1,18000)
+INSERT INTO pagos VALUES (3,3,'EFECTIVO',1,25000)
+INSERT INTO pagos VALUES (4,4,'TRANSFERENCIA',3,30000)
+INSERT INTO pagos VALUES (5,5,'EFECTIVO',1,27000)
+INSERT INTO pagos VALUES (6,6,'CREDITO',12,45000)
+INSERT INTO pagos VALUES (7,7,'DEBITO',1,47000)
+
+INSERT INTO pagos VALUES (8,8,'EFECTIVO',1,16000)
+INSERT INTO pagos VALUES (9,9,'CREDITO',6,21000)
+INSERT INTO pagos VALUES (10,10,'TRANSFERENCIA',2,22000)
+
+INSERT INTO pagos VALUES (11,11,'DEBITO',1,19000)
+INSERT INTO pagos VALUES (12,12,'EFECTIVO',1,26000)
+INSERT INTO pagos VALUES (13,13,'CREDITO',6,32000)
+INSERT INTO pagos VALUES (14,14,'TRANSFERENCIA',4,37000)
+
+INSERT INTO pagos VALUES (15,15,'DEBITO',1,12000)
+INSERT INTO pagos VALUES (16,16,'CREDITO',3,18000)
+
+INSERT INTO pagos VALUES (17,17,'TRANSFERENCIA',2,24000)
+INSERT INTO pagos VALUES (18,18,'EFECTIVO',1,29000)
+
+INSERT INTO pagos VALUES (19,19,'CREDITO',5,31000)
+INSERT INTO pagos VALUES (20,20,'DEBITO',1,35000)
+
+INSERT INTO pagos VALUES (21,21,'TRANSFERENCIA',2,12000)
+INSERT INTO pagos VALUES (22,22,'CREDITO',4,17000)
+
+INSERT INTO pagos VALUES (23,23,'EFECTIVO',1,25000)
+INSERT INTO pagos VALUES (24,24,'DEBITO',1,21000)
+
+INSERT INTO pagos VALUES (25,25,'CREDITO',6,26000)
+INSERT INTO pagos VALUES (26,26,'TRANSFERENCIA',3,30000)
+
+INSERT INTO pagos VALUES (27,27,'EFECTIVO',1,20000)
+INSERT INTO pagos VALUES (28,28,'DEBITO',1,22000)
+
+INSERT INTO pagos VALUES (7000,710,'CREDITO',3,3000)
+INSERT INTO pagos VALUES (7001,711,'DEBITO',1,3500)
+INSERT INTO pagos VALUES (7002,712,'TRANSFERENCIA',2,4000)
+INSERT INTO pagos VALUES (7003,713,'EFECTIVO',1,4500)
+
+
+
+INSERT INTO pagos VALUES (8000,8000,'CREDITO',3,15000)
+
+-------------------------------------------------
+-- DEVOLUCIONES
+-------------------------------------------------
+INSERT INTO devoluciones VALUES (15,'2025-02-10',4200,'Cancelacion del viaje')
+INSERT INTO devoluciones VALUES (16,'2025-03-10',6300,'Problemas espacio-temporales')
+INSERT INTO devoluciones VALUES (25,'2025-08-10',9100,'Falla del condensador')

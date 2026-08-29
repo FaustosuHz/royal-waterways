@@ -1,0 +1,328 @@
+﻿@model WebApp.Models.Dtos.Equipo.EquipoAltaDto
+
+@{
+    ViewData["Title"] = "Editar Equipo";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+        <h3>Editar Equipo</h3>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    <form asp-action="Edit" method="post" onsubmit="return validarFormulario();">
+
+        <input type="hidden" name="id" value="@ViewContext.RouteData.Values["id"]" />
+
+        <div class="mb-3">
+            <label>Marca</label>
+            <input id="marca" name="marca" class="form-control" value="@Model.marca" />
+        </div>
+
+        <div class="mb-3">
+            <label>Modelo</label>
+            <input id="modelo" name="modelo" class="form-control" value="@Model.modelo" />
+        </div>
+
+        <div class="mb-3">
+            <label>Cantidad disponible</label>
+            <input id="cantidadDisponible"
+                   type="number"
+                   name="cantidadDisponible"
+                   class="form-control"
+                   value="@Model.cantidadDisponible" />
+        </div>
+
+        <div class="mb-3">
+            <label>Tipo de equipo</label>
+            <input name="tipoEquipo"
+                   class="form-control"
+                   value="@Model.tipoEquipo"
+                   readonly />
+        </div>
+
+        @if (Model.tipoEquipo == "Camara")
+        {
+            <div class="mb-3">
+                <label>Tipo sensor</label>
+
+                <select name="tipoSensor" class="form-select">
+                    <option value="">Seleccione</option>
+
+                    @if (Model.tipoSensor == "CCD")
+                    {
+                        <option value="CCD" selected>CCD</option>
+                    }
+                    else
+                    {
+                        <option value="CCD">CCD</option>
+                    }
+
+                    @if (Model.tipoSensor == "CMOS")
+                    {
+                        <option value="CMOS" selected>CMOS</option>
+                    }
+                    else
+                    {
+                        <option value="CMOS">CMOS</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Resolución</label>
+                <input name="resolucion"
+                       class="form-control"
+                       value="@Model.resolucion" />
+            </div>
+
+            <div class="mb-3">
+                <label>Tamaño pixel (micras)</label>
+                <input name="tamanioPixelMicras"
+                       class="form-control"
+                       value="@Model.tamanioPixelMicras" />
+            </div>
+        }
+
+        @if (Model.tipoEquipo == "Montura")
+        {
+            <div class="mb-3">
+                <label>Tipo montura</label>
+
+                <select name="tipoMontura" class="form-select">
+
+                    <option value="">Seleccione</option>
+
+                    @if (Model.tipoMontura == "Ecuatorial")
+                    {
+                        <option value="Ecuatorial" selected>Ecuatorial</option>
+                    }
+                    else
+                    {
+                        <option value="Ecuatorial">Ecuatorial</option>
+                    }
+
+                    @if (Model.tipoMontura == "AltAzimutal")
+                    {
+                        <option value="AltAzimutal" selected>AltAzimutal</option>
+                    }
+                    else
+                    {
+                        <option value="AltAzimutal">AltAzimutal</option>
+                    }
+
+                    @if (Model.tipoMontura == "Hibrida")
+                    {
+                        <option value="Hibrida" selected>Hibrida</option>
+                    }
+                    else
+                    {
+                        <option value="Hibrida">Hibrida</option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Carga útil (Kg)</label>
+                <input type="number"
+                       step="0.01"
+                       name="cargaUtilKg"
+                       class="form-control"
+                       value="@Model.cargaUtilKg" />
+            </div>
+
+            <input type="hidden"
+                   name="esGoTo"
+                   value="@(Model.esGoTo == true ? "true" : "false")" />
+
+            <div class="form-check">
+                @if (Model.esGoTo == true)
+                {
+                    <input type="checkbox"
+                           class="form-check-input"
+                           checked
+                           disabled />
+                }
+                else
+                {
+                    <input type="checkbox"
+                           class="form-check-input"
+                           disabled />
+                }
+
+                <label class="form-check-label">Es GoTo</label>
+            </div>
+        }
+
+        @if (Model.tipoEquipo == "Ocular")
+        {
+            <div class="mb-3">
+                <label>Diámetro (mm)</label>
+                <input name="diametroMM"
+                       class="form-control"
+                       value="@Model.diametroMM" />
+            </div>
+
+            <div class="mb-3">
+                <label>Ángulo visión (grados)</label>
+                <input name="anguloVisionGrados"
+                       class="form-control"
+                       value="@Model.anguloVisionGrados" />
+            </div>
+        }
+
+        @if (Model.tipoEquipo == "Telescopio")
+        {
+            <div class="mb-3">
+                <label>Apertura (mm)</label>
+                <input name="aperturaMM"
+                       class="form-control"
+                       value="@Model.aperturaMM" />
+            </div>
+
+            <div class="mb-3">
+                <label>Relación focal</label>
+                <input name="relacionFocal"
+                       class="form-control"
+                       value="@Model.relacionFocal" />
+            </div>
+
+            <div class="mb-3">
+                <label>Distancia focal (mm)</label>
+                <input name="distanciaFocalMM"
+                       class="form-control"
+                       value="@Model.distanciaFocalMM" />
+            </div>
+
+            <div class="mb-3">
+                <label>Peso (kg)</label>
+                <input name="pesoKg"
+                       class="form-control"
+                       value="@Model.pesoKg" />
+            </div>
+        }
+
+        <button class="btn btn-primary mt-3">
+            Guardar
+        </button>
+
+    </form>
+</div>
+
+<script>
+    function validarFormulario() {
+
+        const marca = document.getElementById("marca").value.trim();
+        const modelo = document.getElementById("modelo").value.trim();
+        const cantidad = document.getElementById("cantidadDisponible").value.trim();
+        const tipoEquipo = document.querySelector('input[name="tipoEquipo"]').value;
+
+        if (marca === "") {
+            alert("La marca es obligatoria");
+            return false;
+        }
+
+        if (modelo === "") {
+            alert("El modelo es obligatorio");
+            return false;
+        }
+
+        if (cantidad === "" || parseInt(cantidad) <= 0) {
+            alert("La cantidad debe ser mayor a 0");
+            return false;
+        }
+
+        if (tipoEquipo === "Camara") {
+
+            const tipoSensor = document.querySelector('[name="tipoSensor"]').value;
+            const resolucion = document.querySelector('[name="resolucion"]').value.trim();
+            const tamanioPixelMicras = document.querySelector('[name="tamanioPixelMicras"]').value.trim();
+
+            if (tipoSensor === "") {
+                alert("Debe seleccionar un tipo de sensor");
+                return false;
+            }
+
+            if (resolucion === "") {
+                alert("La resolución es obligatoria");
+                return false;
+            }
+
+            if (tamanioPixelMicras === "") {
+                alert("El tamaño de pixel es obligatorio");
+                return false;
+            }
+        }
+
+        if (tipoEquipo === "Montura") {
+
+            const tipoMontura = document.querySelector('[name="tipoMontura"]').value;
+            const cargaUtilKg = document.querySelector('[name="cargaUtilKg"]').value.trim();
+
+            if (tipoMontura === "") {
+                alert("Debe seleccionar un tipo de montura");
+                return false;
+            }
+
+            if (cargaUtilKg === "" || parseFloat(cargaUtilKg) <= 0) {
+                alert("La carga útil debe ser mayor a 0");
+                return false;
+            }
+        }
+
+        if (tipoEquipo === "Ocular") {
+
+            const diametroMM = document.querySelector('[name="diametroMM"]').value.trim();
+            const anguloVisionGrados = document.querySelector('[name="anguloVisionGrados"]').value.trim();
+
+            if (diametroMM === "" || parseFloat(diametroMM) <= 0) {
+                alert("El diámetro debe ser mayor a 0");
+                return false;
+            }
+
+            if (anguloVisionGrados === "" || parseFloat(anguloVisionGrados) <= 0) {
+                alert("El ángulo de visión debe ser mayor a 0");
+                return false;
+            }
+        }
+
+        if (tipoEquipo === "Telescopio") {
+
+            const aperturaMM = document.querySelector('[name="aperturaMM"]').value.trim();
+            const relacionFocal = document.querySelector('[name="relacionFocal"]').value.trim();
+            const distanciaFocalMM = document.querySelector('[name="distanciaFocalMM"]').value.trim();
+            const pesoKg = document.querySelector('[name="pesoKg"]').value.trim();
+
+            if (aperturaMM === "" || parseFloat(aperturaMM) <= 0) {
+                alert("La apertura debe ser mayor a 0");
+                return false;
+            }
+
+            if (relacionFocal === "" || parseFloat(relacionFocal) <= 0) {
+                alert("La relación focal debe ser mayor a 0");
+                return false;
+            }
+
+            if (distanciaFocalMM === "" || parseFloat(distanciaFocalMM) <= 0) {
+                alert("La distancia focal debe ser mayor a 0");
+                return false;
+            }
+
+            if (pesoKg === "" || parseFloat(pesoKg) <= 0) {
+                alert("El peso debe ser mayor a 0");
+                return false;
+            }
+        }
+
+        return true;
+    }
+</script>

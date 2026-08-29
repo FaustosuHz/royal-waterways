@@ -1,0 +1,1409 @@
+{
+  "info": {
+    "_postman_id": "319f3f2e-ec0d-4124-b581-4e25bf28483c",
+    "name": "ObligatorioP3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31007739"
+  },
+  "item": [
+    {
+      "name": "Usuario",
+      "item": [
+        {
+          "name": "CreateUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"carlos\",\r\n  \"apellido\": \"Perez\",\r\n  \"direccion\": \"Av Italia 1234\",\r\n  \"telefono\": \"099123456\",\r\n  \"email\": \"juaCarlos322@gm.com\",\r\n  \"nombreUsuario\": \"calrosjuaez\",\r\n  \"contrasenia\": \"Abc1234!\",\r\n  \"rol\": \"Administrador\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Usuarios",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditUser",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Martina\",\r\n  \"apellido\": \"Rodriguez\",\r\n  \"direccion\": \"Bulevar Artigas 2450\",\r\n  \"telefono\": \"098765432\",\r\n  \"email\": \"martina.rodriguez@gmail.com\",\r\n  \"nombreUsuario\": \"martinar\",\r\n  \"contrasenia\": \"M4rtina!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Usuarios/6",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Usuarios",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllUsuarios",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Usuarios",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteUsuario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Usuarios",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUsuarioById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Usuarios/6",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Usuarios",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{token}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Equipo",
+      "item": [
+        {
+          "name": "CreateTelescopio",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"marca\": \"SkyWatcher\",\r\n  \"modelo\": \"Explorer 200P\",\r\n  \"cantidadDisponible\": 3,\r\n  \"tipoEquipo\": \"Telescopio\",\r\n\r\n  \"tipoSensor\": null,\r\n  \"resolucion\": null,\r\n  \"tamanioPixelMicras\": null,\r\n\r\n  \"tipoMontura\": null,\r\n  \"cargaUtilKg\": null,\r\n  \"esGoTo\": null,\r\n\r\n  \"diametroMM\": null,\r\n  \"anguloVisionGrados\": null,\r\n\r\n  \"aperturaMM\": 200,\r\n  \"relacionFocal\": \"f/5\",\r\n  \"distanciaFocalMM\": 1000,\r\n  \"pesoKg\": 8.7\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateEquipoMontura",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"marca\": \"SkyWatcher\",\r\n  \"modelo\": \"EQ5\",\r\n  \"cantidadDisponible\": 2,\r\n  \"tipoEquipo\": \"Montura\",\r\n\r\n  \"tipoSensor\": null,\r\n  \"resolucion\": null,\r\n  \"tamanioPixelMicras\": null,\r\n\r\n  \"tipoMontura\": \"Ecuatorial\",\r\n  \"cargaUtilKg\": 10,\r\n  \"esGoTo\": true,\r\n\r\n  \"diametroMM\": null,\r\n  \"anguloVisionGrados\": null,\r\n\r\n  \"aperturaMM\": null,\r\n  \"relacionFocal\": null,\r\n  \"distanciaFocalMM\": null,\r\n  \"pesoKg\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateEquipoCamara",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"marca\": \"ZWO\",\r\n  \"modelo\": \"ASI294MC Pro\",\r\n  \"cantidadDisponible\": 2,\r\n  \"tipoEquipo\": \"Camara\",\r\n\r\n  \"tipoSensor\": \"CMOS\",\r\n  \"resolucion\": \"4144x2822\",\r\n  \"tamanioPixelMicras\": 4.63,\r\n\r\n  \"tipoMontura\": null,\r\n  \"cargaUtilKg\": null,\r\n  \"esGoTo\": null,\r\n\r\n  \"diametroMM\": null,\r\n  \"anguloVisionGrados\": null,\r\n\r\n  \"aperturaMM\": null,\r\n  \"relacionFocal\": null,\r\n  \"distanciaFocalMM\": null,\r\n  \"pesoKg\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateEquipoOcular",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"marca\": \"Celestron\",\r\n  \"modelo\": \"X-Cel LX 25mm\",\r\n  \"cantidadDisponible\": 5,\r\n  \"tipoEquipo\": \"Ocular\",\r\n\r\n  \"tipoSensor\": null,\r\n  \"resolucion\": null,\r\n  \"tamanioPixelMicras\": null,\r\n\r\n  \"tipoMontura\": null,\r\n  \"cargaUtilKg\": null,\r\n  \"esGoTo\": null,\r\n\r\n  \"diametroMM\": 25,\r\n  \"anguloVisionGrados\": 60,\r\n\r\n  \"aperturaMM\": null,\r\n  \"relacionFocal\": null,\r\n  \"distanciaFocalMM\": null,\r\n  \"pesoKg\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditEquipoCamara",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipoEquipo\": \"Camara\",\r\n  \"marca\": \"Canon\",\r\n  \"modelo\": \"EOS 90D\",\r\n  \"cantidadDisponible\": 5,\r\n  \"tipoSensor\": \"CMOS\",\r\n  \"resolucion\": \"32.5MP\",\r\n  \"tamanioPixelMicras\": 3.2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditEquipoTelescopio",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipoEquipo\": \"Telescopio\",\r\n  \"marca\": \"Celestron\",\r\n  \"modelo\": \"NexStar 8SE\",\r\n  \"cantidadDisponible\": 4,\r\n  \"aperturaMM\": 203,\r\n  \"relacionFocal\": \"f/10\",\r\n  \"distanciaFocalMM\": 2032,\r\n  \"pesoKg\": 9.5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditEquipoMontura",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipoEquipo\": \"Montura\",\r\n  \"marca\": \"Montimonti\",\r\n  \"modelo\": \"EQ6\",\r\n  \"cantidadDisponible\": 3,\r\n  \"tipoMontura\": \"Ecuatorial\",\r\n  \"cargaUtilKg\": 20.5,\r\n  \"esGoTo\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos/2",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditEquipoOcular",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipoEquipo\": \"Telescopio\",\r\n  \"marca\": \"Celestron\",\r\n  \"modelo\": \"NexStar 8SE\",\r\n  \"cantidadDisponible\": 4,\r\n  \"aperturaMM\": 203,\r\n  \"relacionFocal\": \"f/10\",\r\n  \"distanciaFocalMM\": 2032,\r\n  \"pesoKg\": 9.5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllEquipos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetDisponibilidad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos/2/disponibilidad",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos",
+                "2",
+                "disponibilidad"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetEquipoById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteEquipo",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Equipos/5",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Equipos",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{token}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Prestamo",
+      "item": [
+        {
+          "name": "CreatePrestamo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"usuarioId\": 1,\r\n  \"telescopioId\": 2,\r\n  \"monturaId\": 3,\r\n  \"camaraId\": 4,\r\n  \"ocularId\": 5,\r\n  \"fechaInicio\": \"2026-05-29T00:00:00\",\r\n  \"fechaFin\": \"2026-06-05T00:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditPrestamo",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"usuarioId\": 1,\r\n  \"telescopioId\": 1,\r\n  \"monturaId\": 2,\r\n  \"camaraId\": null,\r\n  \"ocularId\": 4,\r\n  \"fechaInicio\": \"2026-07-01T10:00:00\",\r\n  \"fechaFin\": \"2026-07-10T10:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllPrestamos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetPrestamoById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetPrestamoByUsuario",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllPrestamoUsuario",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetSociosPorTelescopio",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DevolverPrestamo",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/prestamos/15/devolver",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "prestamos",
+                "15",
+                "devolver"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeletePrestamo",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{token}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ObjetoCeleste",
+      "item": [
+        {
+          "name": "GetAllObjetoCeleste",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/ObjetosCelestes",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "ObjetosCelestes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetObjetoCelesteById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/ObjetosCelestes/2",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "ObjetosCelestes",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteObjetoCeleste",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/ObjetosCelestes/2",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "ObjetosCelestes",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateObjetoCeleste",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Andrómeda\",\r\n  \"tipo\": 1,\r\n  \"magnitudAparente\": 3.4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/ObjetosCelestes",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "ObjetosCelestes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EditObjetoCeleste",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Andrómedaaaa\",\r\n  \"tipo\": 1,\r\n  \"magnitudAparente\": 3.4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/ObjetosCelestes/1",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "ObjetosCelestes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{token}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Observacion",
+      "item": [
+        {
+          "name": "GetObservaciones",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Prestamos",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Prestamos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetRankingObjetoCeleste",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Observaciones/ranking",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Observaciones",
+                "ranking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateObservacion",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"usuarioId\": 1,\r\n  \"prestamoId\": 10,\r\n  \"objetoCelesteId\": 5,\r\n  \"fechaObservacion\": \"2026-06-07T22:30:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/Observaciones",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "Observaciones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EvaluarObservacion",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"prestamoId\": 1,\r\n  \"objetoCelesteId\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7051/api/v1/ia/evaluar-observacion",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7051",
+              "path": [
+                "api",
+                "v1",
+                "ia",
+                "evaluar-observacion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Gemini",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-goog-api-key",
+                "value": "TU_API_KEY"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"contents\": [\n      {\n        \"parts\": [\n          {\n            \"text\": \"Devuelve SOLO JSON con estado (IDEAL, ADECUADO, NO_RECOMENDABLE) y detalle. Evalúa este equipo: telescopio 203mm, cámara CMOS, objeto Saturno.\"\n          }\n        ]\n      }\n    ]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+              "protocol": "https",
+              "host": [
+                "generativelanguage",
+                "googleapis",
+                "com"
+              ],
+              "path": [
+                "v1beta",
+                "models",
+                "gemini-2.5-flash:generateContent"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{token}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Guardar token\", function () {\r",
+              "    pm.expect(jsonData.token).to.exist;\r",
+              "    pm.environment.set(\"token\", jsonData.token);\r",
+              "});\r",
+              "\r",
+              "console.log(\"Token:\", jsonData.token);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreUsuario\": \"calrosjuaez\",\r\n  \"contrasenia\": \"Abc1234!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7051/api/v1/Login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7051",
+          "path": [
+            "api",
+            "v1",
+            "Login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

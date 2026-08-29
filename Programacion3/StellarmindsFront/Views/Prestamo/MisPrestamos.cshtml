@@ -1,0 +1,114 @@
+﻿@model List<StellarmindsFront.Models.Dtos.Prestamo.PrestamoDetalleDto>
+
+@{
+    ViewData["Title"] = "Mis Préstamos";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Mis Préstamos</h2>
+
+    <form method="get" asp-action="MisPrestamos" class="row mb-4">
+
+        <div class="col-md-4">
+            <label>Mes</label>
+            <select name="mes" class="form-select">
+                <option value="">Seleccione</option>
+
+                @for (int i = 1; i <= 12; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label>Año</label>
+            <input type="number"
+                   name="anio"
+                   class="form-control"
+                   min="2020"
+                   max="2100" />
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">
+                Buscar
+            </button>
+        </div>
+
+    </form>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            No existen préstamos para el período seleccionado.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Telescopio</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Estado</th>
+                    <th>Atrasado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var p in Model)
+                {
+                    bool atrasado =
+                    p.Estado == "EnPrestamo"
+                    && DateTime.Now.Date > p.FechaFin.Date;
+
+                    <tr>
+                        <td>@p.Id</td>
+
+                        <td>
+                            @p.Telescopio?.Marca
+                            @p.Telescopio?.Modelo
+                        </td>
+
+                        <td>@p.FechaInicio.ToString("dd/MM/yyyy")</td>
+
+                        <td>@p.FechaFin.ToString("dd/MM/yyyy")</td>
+
+                        <td>@p.Estado</td>
+
+                        <td>
+                            @if (atrasado)
+                            {
+                                <span class="badge bg-danger">
+                                    Sí
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">
+                                    No
+                                </span>
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+
+</div>

@@ -1,0 +1,174 @@
+/* =========================
+   BASE
+========================= */
+
+html {
+    font-size: 14px;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #1a3a6b;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f6f9;
+}
+
+/* =========================
+   HEADER / FOOTER
+========================= */
+
+header,
+footer {
+    background-color: #0b1f3a;
+    color: white;
+}
+
+    header a,
+    footer a {
+        color: #cfd8e3;
+    }
+
+        header a:hover,
+        footer a:hover {
+            color: white;
+        }
+
+footer {
+    margin-top: auto;
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+.login-container {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.login-card {
+    width: 380px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.register-card {
+    width: 600px;
+}
+
+/* Imagen */
+
+.login-img {
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Contenido */
+
+.login-card .card-body {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Espaciado */
+
+.login-card .mb-3,
+.login-card .mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Botones */
+
+.login-buttons {
+    margin-top: 40px;
+}
+
+/* =========================
+   GRID REGISTRO
+========================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn-primary {
+    background-color: #0b1f3a;
+    border-color: #0b1f3a;
+}
+
+    .btn-primary:hover {
+        background-color: #132a4d;
+        border-color: #132a4d;
+    }
+
+/* =========================
+   FORM FLOATING
+========================= */
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .login-card,
+    .register-card {
+        width: 90%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: white !important;
+}

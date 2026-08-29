@@ -1,0 +1,88 @@
+﻿@model List<WebApp.Models.Dtos.Auditoria.AuditoriaPrestamoApiDto>
+
+@{
+    ViewData["Title"] = "Auditoría de Préstamos";
+
+    var coordinadores = Model
+        .Select(x => x.Coordinador)
+        .DistinctBy(x => x.Id)
+        .ToList();
+}
+
+<div class="container mt-4">
+
+    <h3>Auditoría de Préstamos</h3>
+
+    <div class="mb-3">
+
+        <label>Filtrar por coordinador</label>
+
+        <select id="filtro" class="form-control" onchange="filtrar()">
+            <option value="">Todos</option>
+
+            @foreach (var c in coordinadores)
+            {
+                <option value="@c.Id">
+                    @c.NombreUsuario
+                </option>
+            }
+        </select>
+
+    </div>
+
+    <table class="table table-bordered table-striped" id="tabla">
+
+        <thead>
+            <tr>
+                <th>Coordinador</th>
+                <th>Telescopio</th>
+                <th>Acción</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var a in Model)
+            {
+                <tr data-id="@a.Coordinador.Id">
+
+                    <td>@a.Coordinador?.NombreUsuario</td>
+
+                    <td>
+                        @a.Prestamo?.Telescopio?.Marca
+                        @a.Prestamo?.Telescopio?.Modelo
+                    </td>
+
+                    <td>@(a.Accion == 1 ? "Préstamo" : "Devolución")</td>
+
+                    <td>
+                        <a class="btn btn-primary btn-sm"
+                           href="/Auditoria/Detalle/@a.Id">
+                            Detalle
+                        </a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+    function filtrar() {
+        let id = document.getElementById("filtro").value;
+        let filas = document.querySelectorAll("#tabla tbody tr");
+
+        filas.forEach(f => {
+            if (!id || f.getAttribute("data-id") == id) {
+                f.style.display = "";
+            } else {
+                f.style.display = "none";
+            }
+        });
+    }
+</script>

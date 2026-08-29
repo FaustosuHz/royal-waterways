@@ -1,0 +1,225 @@
+﻿@model PrestamoAltaDto
+
+@using StellarmindsFront.Models.Dtos.Prestamo
+@using StellarmindsFront.Models.Dtos.Usuario
+@using WebApp.Models.Dtos.Equipo
+
+@{
+    ViewData["Title"] = "Alta de Préstamo";
+
+    var usuarios = ViewBag.Usuarios as List<UsuarioListadoDto> ?? new();
+    var equipos = ViewBag.Equipos as List<EquipoListadoDto> ?? new();
+
+    var token = Context.Session.GetString("JWT");
+    var apiBase = "https://localhost:7051";
+}
+
+<div class="container mt-4">
+
+    <div id="alerta" class="alert alert-danger d-none"></div>
+
+    <form id="formPrestamo">
+
+        <div class="mb-3">
+            <label>Usuario</label>
+            <select name="usuarioId" class="form-select">
+                <option value="">Seleccione usuario</option>
+                @foreach (var u in usuarios.Where(x => x.rol == "Socio"))
+                {
+                    <option value="@u.Id">@u.nombreUsuario</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Telescopio</label>
+            <select name="telescopioId" class="form-select equipo-select" data-tipo="Telescopio">
+                <option value="">Seleccione telescopio</option>
+                @foreach (var e in equipos.Where(x => x.TipoEquipo == "Telescopio"))
+                {
+                    <option value="@e.Id">@e.Marca @e.Modelo (@e.CantidadDisponible)</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Montura</label>
+            <select name="monturaId" class="form-select equipo-select" data-tipo="Montura">
+                <option value="">Seleccione montura</option>
+                @foreach (var e in equipos.Where(x => x.TipoEquipo == "Montura"))
+                {
+                    <option value="@e.Id">@e.Marca @e.Modelo (@e.CantidadDisponible)</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Cámara</label>
+            <select name="camaraId" class="form-select equipo-select" data-tipo="Camara">
+                <option value="">Sin cámara</option>
+                @foreach (var e in equipos.Where(x => x.TipoEquipo == "Camara"))
+                {
+                    <option value="@e.Id">@e.Marca @e.Modelo (@e.CantidadDisponible)</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Ocular</label>
+            <select name="ocularId" class="form-select equipo-select" data-tipo="Ocular">
+                <option value="">Sin ocular</option>
+                @foreach (var e in equipos.Where(x => x.TipoEquipo == "Ocular"))
+                {
+                    <option value="@e.Id">@e.Marca @e.Modelo (@e.CantidadDisponible)</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Fecha inicio</label>
+            <input name="fechaInicio" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Fecha fin</label>
+            <input name="fechaFin" type="date" class="form-control" />
+        </div>
+
+        <button id="btnSubmit" type="submit" class="btn btn-primary">
+            Crear préstamo
+        </button>
+
+    </form>
+</div>
+
+<script>
+
+    const token = "@token";
+    const apiBase = "@apiBase";
+
+    const alerta = document.getElementById("alerta");
+    const form = document.getElementById("formPrestamo");
+    const btn = document.getElementById("btnSubmit");
+
+    const estado = {
+        Telescopio: true,
+        Montura: true,
+        Camara: true,
+        Ocular: true
+    };
+
+    function evaluar() {
+        btn.disabled = Object.values(estado).some(x => x === false);
+    }
+
+    function setError(msg) {
+        alerta.classList.remove("d-none");
+        alerta.innerText = msg;
+    }
+
+    function clearError() {
+        alerta.classList.add("d-none");
+        alerta.innerText = "";
+    }
+
+    document.querySelectorAll(".equipo-select").forEach(select => {
+
+        select.addEventListener("change", async function () {
+
+            const id = this.value;
+            const tipo = this.dataset.tipo;
+
+            if (!id) {
+                estado[tipo] = true;
+                clearError();
+                evaluar();
+                return;
+            }
+
+            try {
+                const res = await fetch(`${apiBase}/api/v1/Equipos/${id}/disponibilidad`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const data = await res.json();
+
+                if (!data.disponible) {
+                    estado[tipo] = false;
+                    setError(`No disponible: ${tipo}`);
+                } else {
+                    estado[tipo] = true;
+                    clearError();
+                }
+
+                evaluar();
+
+            } catch {
+                estado[tipo] = false;
+                setError(`Error validando ${tipo}`);
+                evaluar();
+            }
+        });
+    });
+
+       form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const usuarioId = document.querySelector("[name='usuarioId']").value;
+        const telescopioId = document.querySelector("[name='telescopioId']").value;
+        const monturaId = document.querySelector("[name='monturaId']").value;
+        const camaraId = document.querySelector("[name='camaraId']").value;
+        const ocularId = document.querySelector("[name='ocularId']").value;
+
+        const fechaInicio = document.querySelector("[name='fechaInicio']").value;
+        const fechaFin = document.querySelector("[name='fechaFin']").value;
+
+        if (!fechaInicio || !fechaFin) {
+            alerta.classList.remove("d-none");
+            alerta.innerText = "Fechas inválidas";
+            return;
+        }
+
+        const payload = {
+            usuarioId: Number(usuarioId),
+            telescopioId: Number(telescopioId),
+            monturaId: Number(monturaId),
+
+            camaraId: camaraId === "" ? null : Number(camaraId),
+            ocularId: ocularId === "" ? null : Number(ocularId),
+
+            fechaInicio: new Date(fechaInicio).toISOString(),
+            fechaFin: new Date(fechaFin).toISOString()
+        };
+
+        try {
+            const res = await fetch(`${apiBase}/api/v1/Prestamos`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json().catch(() => null);
+
+            if (!res.ok) {
+                alerta.classList.remove("d-none");
+                alerta.innerText = data?.mensaje ?? "Error al crear préstamo";
+                return;
+            }
+
+            alerta.classList.remove("d-none");
+            alerta.classList.remove("alert-danger");
+            alerta.classList.add("alert-success");
+            alerta.innerText = data?.mensaje ?? "Préstamo creado correctamente";
+
+        } catch {
+            alerta.classList.remove("d-none");
+            alerta.innerText = "Error de red";
+        }
+    });
+
+</script>

@@ -1,0 +1,57 @@
+﻿@model WebApp.Models.Dtos.Auditoria.AuditoriaPrestamoApiDto
+
+@{
+    ViewData["Title"] = "Detalle Auditoría";
+
+    var tipoAccion = Model?.Accion == 1 ? "Préstamo" : "Devolución";
+}
+
+<div class="container mt-4">
+
+    <h3>Detalle de Auditoría</h3>
+
+    <div class="card p-3">
+
+        <p><b>Acción:</b> @tipoAccion</p>
+
+        <hr />
+
+        <p><b>Coordinador:</b> @Model?.Coordinador?.NombreUsuario</p>
+
+        <hr />
+
+        <p>
+            <b>Telescopio:</b>
+            @Model?.Prestamo?.Telescopio?.Marca
+            @Model?.Prestamo?.Telescopio?.Modelo
+        </p>
+
+        <p>
+            <b>Montura:</b>
+            @Model?.Prestamo?.Montura?.Marca
+            @Model?.Prestamo?.Montura?.Modelo
+        </p>
+
+        @if (Model?.Prestamo?.Camara != null)
+        {
+            <p>
+                <b>Cámara:</b>
+                @Model.Prestamo.Camara.Marca
+                @Model.Prestamo.Camara.Modelo
+            </p>
+        }
+
+        @if (Model?.Prestamo?.Ocular != null)
+        {
+            <p>
+                <b>Ocular:</b>
+                @Model.Prestamo.Ocular.Marca
+                @Model.Prestamo.Ocular.Modelo
+            </p>
+        }
+
+    </div>
+
+    <a href="/Auditoria/Index" class="btn btn-secondary mt-3">Volver</a>
+
+</div>

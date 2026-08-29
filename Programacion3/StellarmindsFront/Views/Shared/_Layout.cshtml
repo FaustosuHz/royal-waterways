@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StellarMinds</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#0b1f3a;">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">StellarMinds</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                @{
+                    var rol = Context.Session.GetString("rol");
+                }
+
+                <div class="collapse navbar-collapse" id="navbar">
+
+                    @if (!string.IsNullOrEmpty(rol))
+                    {
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            @if (rol == "Administrador")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Usuario" asp-action="Create">Alta de Socios</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Equipo" asp-action="Index">Equipos</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Auditoria" asp-action="Index">Auditoría</a>
+                                </li>
+                            }
+
+                            @if (rol == "Coordinador")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Prestamo" asp-action="Create">Alta Préstamo</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Prestamo" asp-action="Devolver">Devolución</a>
+                                </li>
+                            }
+
+                            @if (rol == "Socio")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Observacion" asp-action="Create">Observación</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Prestamo" asp-action="MisPrestamos">Mis Préstamos</a>
+                                </li>
+                            }
+
+                            @if (rol == "Administrador" || rol == "Coordinador")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Prestamo" asp-action="SociosPorTelescopio">
+                                        Socios por Telescopio
+                                    </a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Observacion" asp-action="Ranking">
+                                    Ranking Objetos
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <ul class="navbar-nav ms-auto me-3">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light"
+                                   asp-controller="Login"
+                                   asp-action="Logout">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    }
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid px-4 flex-grow-1">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-center text-white mt-auto">
+        <div class="container-fluid px-4">
+            <span>Obligatorio 2026 Fausto Aristimuño - 344072</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

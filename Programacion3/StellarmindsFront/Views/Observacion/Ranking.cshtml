@@ -1,0 +1,31 @@
+﻿@using WebApp.Models.Dtos.ObjetoCeleste;
+
+@{
+    ViewData["Title"] = "Ranking de Objetos Celestes";
+}
+
+<div class="container mt-4">
+
+    <h3>Ranking de objetos celestes</h3>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Cantidad observaciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.Tipo</td>
+                    <td>@item.Cantidad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

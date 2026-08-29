@@ -1,0 +1,82 @@
+﻿@model List<StellarmindsFront.Models.Dtos.Usuario.UsuarioListadoDto>
+
+@using WebApp.Models.Dtos.Equipo
+
+@{
+    ViewData["Title"] = "Socios por Telescopio";
+
+    var telescopios =
+        ViewBag.Telescopios as List<EquipoListadoDto>
+        ?? new();
+}
+
+<div class="container mt-4">
+
+    <h2>Socios que solicitaron un telescopio</h2>
+
+    <form method="get" asp-action="SociosPorTelescopio">
+
+        <div class="row mb-3">
+
+            <div class="col-md-6">
+                <label class="form-label">Telescopio</label>
+
+                <select name="telescopioId" class="form-select">
+
+                    <option value="">Seleccione</option>
+
+                    @foreach (var t in telescopios)
+                    {
+                        <option value="@t.Id">
+                            @t.Marca @t.Modelo
+                        </option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="col-md-2 align-self-end">
+                <button type="submit" class="btn btn-primary">
+                    Buscar
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No hay socios para mostrar.
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre Usuario</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var socio in Model)
+                {
+                    <tr>
+                        <td>@socio.Id</td>
+                        <td>@socio.nombreUsuario</td>
+                        <td>@socio.email</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+
+</div>

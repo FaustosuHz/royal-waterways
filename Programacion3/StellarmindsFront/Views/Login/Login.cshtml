@@ -1,0 +1,61 @@
+﻿@model StellarmindsFront.Models.Dtos.Usuario.UsuarioLoginDto
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container">
+    <div class="card login-card">
+
+        <img src="~/img/loginImage.png" class="login-img" />
+
+        <div class="card-body">
+            <h3 class="text-center mb-4">Ingresar</h3>
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
+
+            <form asp-action="Login">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Usuario</label>
+                    <input asp-for="nombreUsuario"
+                           class="form-control"
+                           data-val="true"
+                           data-val-required="El usuario no puede estar vacío" />
+                    <span asp-validation-for="nombreUsuario" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Contraseña</label>
+                    <input asp-for="contrasenia"
+                           type="password"
+                           class="form-control"
+                           data-val="true"
+                           data-val-required="La contraseña no puede estar vacía" />
+                    <span asp-validation-for="contrasenia" class="text-danger"></span>
+                </div>
+
+                <div class="login-buttons">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Login
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,187 @@
+﻿@using StellarmindsFront.Models.Dtos.Usuario
+
+@{
+    ViewData["Title"] = "Devolver Préstamo";
+
+    var usuarios = ViewBag.Usuarios as List<UsuarioListadoDto> ?? new();
+
+    var token = Context.Session.GetString("JWT");
+    var apiBase = "https://localhost:7051";
+}
+
+<div class="container mt-4">
+
+    <h3>Devolver préstamo</h3>
+
+    <div id="alerta" class="alert alert-danger d-none"></div>
+
+    <div class="mb-3">
+        <label>Usuario</label>
+        <select id="usuarioId" class="form-select">
+            <option value="">Seleccione usuario</option>
+
+            @foreach (var u in usuarios)
+            {
+                <option value="@u.Id">@u.nombreUsuario</option>
+            }
+        </select>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Telescopio</th>
+                <th>Montura</th>
+                <th>Cámara</th>
+                <th>Ocular</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablaPrestamos">
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+
+    const token = "@token";
+    const apiBase = "@apiBase";
+
+    const usuarioSelect = document.getElementById("usuarioId");
+    const tabla = document.getElementById("tablaPrestamos");
+    const alerta = document.getElementById("alerta");
+
+    usuarioSelect.addEventListener("change", async () => {
+
+        tabla.innerHTML = "";
+        alerta.classList.add("d-none");
+
+        const usuarioId = usuarioSelect.value;
+
+        if (!usuarioId) return;
+
+        try {
+
+            const res = await fetch(
+                `${apiBase}/api/v1/Prestamos/usuario/${usuarioId}`,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+            const prestamos = await res.json();
+
+            if (!prestamos.length) {
+
+                tabla.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="text-center">
+                            El usuario no tiene préstamos activos.
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            prestamos.forEach(p => {
+
+                const atrasado =
+                    new Date() > new Date(p.fechaFin);
+
+                tabla.innerHTML += `
+                    <tr>
+
+                        <td>${p.id}</td>
+
+                        <td>
+                            ${p.telescopio.marca}
+                            ${p.telescopio.modelo}
+                        </td>
+
+                        <td>
+                            ${p.montura.marca}
+                            ${p.montura.modelo}
+                        </td>
+
+                        <td>
+                            ${p.camara
+                                ? `${p.camara.marca} ${p.camara.modelo}`
+                                : '-'}
+                        </td>
+
+                        <td>
+                            ${p.ocular
+                                ? `${p.ocular.marca} ${p.ocular.modelo}`
+                                : '-'}
+                        </td>
+
+                        <td>
+                            ${p.fechaInicio.split('T')[0]}
+                        </td>
+
+                        <td>
+                            ${p.fechaFin.split('T')[0]}
+                        </td>
+
+                        <td>
+                            ${atrasado
+                                ? '<span class="badge bg-danger">Atrasado</span>'
+                                : '<span class="badge bg-success">En fecha</span>'}
+                        </td>
+
+                        <td>
+                            <button
+                                class="btn btn-success btn-devolver"
+                                data-id="${p.id}">
+                                Devolver
+                            </button>
+                        </td>
+
+                    </tr>
+                `;
+            });
+
+        } catch {
+
+            alerta.classList.remove("d-none");
+            alerta.innerText = "Error obteniendo préstamos";
+        }
+    });
+
+    document.addEventListener("click", async function (e) {
+
+        if (!e.target.classList.contains("btn-devolver"))
+            return;
+
+        const id = e.target.dataset.id;
+
+        try {
+
+            const res = await fetch(
+                `${apiBase}/api/v1/Prestamos/${id}/devolver`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+            if (!res.ok)
+                throw new Error();
+
+            e.target.closest("tr").remove();
+
+        } catch {
+
+            alerta.classList.remove("d-none");
+            alerta.innerText = "No se pudo devolver el préstamo";
+        }
+    });
+
+</script>

@@ -1,0 +1,253 @@
+﻿@model List<WebApp.Models.Dtos.Equipo.EquipoListadoDto>
+
+@{
+    ViewData["Title"] = "Equipos";
+
+    var camaras = Model?.Where(x => x.TipoEquipo == "Camara").ToList();
+    var monturas = Model?.Where(x => x.TipoEquipo == "Montura").ToList();
+    var oculares = Model?.Where(x => x.TipoEquipo == "Ocular").ToList();
+    var telescopios = Model?.Where(x => x.TipoEquipo == "Telescopio").ToList();
+}
+
+<style>
+    .titulo-principal {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    .titulo-seccion {
+        text-align: left;
+        font-size: 1rem;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    table td, table th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    thead th {
+        background-color: #343a40 !important;
+        color: white !important;
+        font-size: 0.85rem;
+        padding: 6px !important;
+    }
+
+    .btn-link-clean {
+        background: none;
+        border: none;
+        padding: 0;
+        color: #000;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 0.85rem;
+    }
+
+    .acciones {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+            Volver
+        </a>
+
+        <a asp-controller="Equipo" asp-action="Create" class="btn btn-dark">
+            Crear equipo
+        </a>
+
+    </div>
+
+    <!-- MENSAJES -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            @TempData["Error"]
+        </div>
+    }
+
+    <div class="titulo-principal">
+        Listado de Equipos
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            No hay equipos cargados.
+        </div>
+    }
+
+    <!-- CAMARAS -->
+    <div class="titulo-seccion">Cámaras</div>
+
+    @if (camaras != null && camaras.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                    <th>Sensor</th>
+                    <th>Resolución</th>
+                    <th>Pixel micras</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in camaras)
+                {
+                    <tr>
+                        <td>@e.Marca</td>
+                        <td>@e.Modelo</td>
+                        <td>@e.CantidadDisponible</td>
+                        <td>@e.TipoSensor</td>
+                        <td>@e.Resolucion</td>
+                        <td>@e.TamanioPixelMicras</td>
+                        <td>
+                            <div class="acciones">
+                                <a asp-action="Edit" asp-route-id="@e.Id">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@e.Id">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- MONTURAS -->
+    <div class="titulo-seccion">Monturas</div>
+
+    @if (monturas != null && monturas.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                    <th>Tipo Montura</th>
+                    <th>Carga en kilogramos</th>
+                    <th>GoTo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in monturas)
+                {
+                    <tr>
+                        <td>@e.Marca</td>
+                        <td>@e.Modelo</td>
+                        <td>@e.CantidadDisponible</td>
+                        <td>@e.TipoMontura</td>
+                        <td>@e.CargaUtilKg</td>
+                        <td>@e.EsGoTo</td>
+                        <td>
+                            <div class="acciones">
+                                <a asp-action="Edit" asp-route-id="@e.Id">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@e.Id">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- OCULARES -->
+    <div class="titulo-seccion">Oculares</div>
+
+    @if (oculares != null && oculares.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                    <th>Diámetro en milímetros</th>
+                    <th>Ángulo de visión en grados</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in oculares)
+                {
+                    <tr>
+                        <td>@e.Marca</td>
+                        <td>@e.Modelo</td>
+                        <td>@e.CantidadDisponible</td>
+                        <td>@e.DiametroMM</td>
+                        <td>@e.AnguloVisionGrados</td>
+                        <td>
+                            <div class="acciones">
+                                <a asp-action="Edit" asp-route-id="@e.Id">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@e.Id">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- TELESCOPIOS -->
+    <div class="titulo-seccion">Telescopios</div>
+
+    @if (telescopios != null && telescopios.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                    <th>Apertura en milímetros</th>
+                    <th>Relación focal</th>
+                    <th>Distancia focal en milímetros</th>
+                    <th>Peso en kilogramos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in telescopios)
+                {
+                    <tr>
+                        <td>@e.Marca</td>
+                        <td>@e.Modelo</td>
+                        <td>@e.CantidadDisponible</td>
+                        <td>@e.AperturaMM</td>
+                        <td>@e.RelacionFocal</td>
+                        <td>@e.DistanciaFocalMM</td>
+                        <td>@e.PesoKg</td>
+                        <td>
+                            <div class="acciones">
+                                <a asp-action="Edit" asp-route-id="@e.Id">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@e.Id">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

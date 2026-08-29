@@ -1,0 +1,141 @@
+﻿@model StellarmindsFront.Models.Dtos.Usuario.UsuarioAltaDto
+
+@{
+    ViewData["Title"] = "Alta de Socio";
+}
+
+<div class="login-container">
+    <div class="card login-card register-card">
+
+        <div class="card-body">
+
+            <h3 class="text-center mb-4">Alta de Socio</h3>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["Success"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            <form asp-action="Create" method="post">
+
+                <div class="form-grid">
+
+                    <div>
+                        <label>Nombre</label>
+                        <input name="nombre"
+                               class="form-control"
+                               required
+                               minlength="3"
+                               maxlength="30" />
+                    </div>
+
+                    <div>
+                        <label>Apellido</label>
+                        <input name="apellido"
+                               class="form-control"
+                               required
+                               minlength="3"
+                               maxlength="30" />
+                    </div>
+
+                    <div class="full-width">
+                        <label>Dirección</label>
+                        <input name="direccion"
+                               class="form-control"
+                               required
+                               minlength="3"
+                               maxlength="100" />
+                    </div>
+
+                    <!-- TELÉFONO -->
+                    <div>
+                        <label>Teléfono</label>
+                        <input name="telefono"
+                               type="number"
+                               class="form-control"
+                               required
+                               min="1000000"
+                               max="999999999999999" />
+                    </div>
+
+                    <div>
+                        <label>Email</label>
+                        <input name="email"
+                               type="email"
+                               class="form-control"
+                               required
+                               maxlength="50" />
+                    </div>
+
+                    <div class="full-width">
+                        <label>Usuario</label>
+                        <input name="nombreUsuario"
+                               class="form-control"
+                               required
+                               minlength="3"
+                               maxlength="20" />
+                    </div>
+
+                    <div class="full-width">
+                        <label>Contraseña</label>
+                        <input name="contrasenia"
+                               type="password"
+                               class="form-control"
+                               required
+                               minlength="8"
+                               maxlength="30"
+                               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}" />
+
+                        <small class="text-muted">
+                            Debe contener mayúscula, minúscula, número y carácter especial
+                        </small>
+                    </div>
+
+                    <div class="full-width">
+                        <label>Rol</label>
+
+                        <select name="Rol"
+                                class="form-select"
+                                required>
+
+                            <option value="">Seleccione un Rol</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Coordinador">Coordinador</option>
+                            <option value="Socio">Socio</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-4 d-flex gap-3">
+
+                    <button type="submit" class="btn btn-primary w-50">
+                        Guardar
+                    </button>
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="btn btn-outline-secondary w-50">
+                        Volver
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

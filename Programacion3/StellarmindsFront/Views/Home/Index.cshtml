@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home";
+
+    var nombre = ViewBag.Nombre ?? "Usuario";
+    var rol = ViewBag.Rol ?? "sin rol";
+    var email = ViewBag.Email ?? "sin email";
+    var userId = ViewBag.UserId ?? "sin id";
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+        <h1 class="display-4">Bienvenido, @nombre</h1>
+
+        <p class="lead">
+            Administrá y registrá tus observaciones fácilmente
+        </p>
+    </div>
+
+    <div class="card mx-auto mb-4" style="max-width: 600px;">
+        <div class="card-header">
+            Datos de la sesión
+        </div>
+
+        <div class="card-body">
+            <p><strong>Nombre:</strong> @nombre</p>
+            <p><strong>Rol:</strong> @rol</p>
+            <p><strong>Email:</strong> @email</p>
+            <p><strong>Id:</strong> @userId</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <img src="~/img/homeImage.png"
+             class="img-fluid"
+             style="max-width: 350px; border-radius: 80px;"
+             alt="Planetario">
+    </div>
+
+</div>

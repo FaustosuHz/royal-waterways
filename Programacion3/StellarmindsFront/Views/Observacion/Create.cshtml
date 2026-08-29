@@ -1,0 +1,185 @@
+﻿@model StellarmindsFront.Models.Dtos.Observacion.ObservacionAltaDto
+
+@using StellarmindsFront.Models.Dtos.Prestamo
+@using StellarmindsFront.Models.Dtos.Usuario
+@using WebApp.Models.Dtos.Equipo
+
+@{
+    var apiBaseUrl = "https://localhost:7051/api/v1/ia";
+    var token = Context.Session.GetString("JWT");
+
+    var prestamos = ViewBag.Prestamos as List<StellarmindsFront.Models.Dtos.Prestamo.PrestamoDetalleDto>;
+    var objetos = ViewBag.Objetos as List<WebApp.Models.Dtos.ObjetoCeleste.ObjetoCelesteDto>;
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+    <div class="card shadow p-4" style="width: 600px;">
+
+        <h3 class="text-center mb-4">Nueva Observación</h3>
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Error"]</div>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+
+        <form asp-action="Create" method="post">
+
+            <input type="hidden" id="indicadorInput" name="indicador" />
+            <input type="hidden" id="detalleInput" name="detalle" />
+
+            <!-- PRESTAMO -->
+            <div class="mb-3">
+                <label class="form-label">Préstamo</label>
+                <select asp-for="prestamoId" class="form-select" id="prestamoSelect">
+                    <option value="">Seleccione</option>
+
+                    @if (prestamos != null)
+                    {
+                        foreach (var p in prestamos)
+                        {
+                            <option value="@p.Id"
+                                    data-telescopio="@p.Telescopio?.Marca @p.Telescopio?.Modelo"
+                                    data-montura="@p.Montura?.Marca @p.Montura?.Modelo"
+                                    data-camara="@p.Camara?.Marca @p.Camara?.Modelo"
+                                    data-ocular="@p.Ocular?.Marca @p.Ocular?.Modelo">
+
+                                @p.Telescopio?.Marca @p.Telescopio?.Modelo
+                            </option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <!-- CARD EQUIPO -->
+            <div id="equipoCard" class="border rounded p-3 mb-3 d-none">
+                <div><strong>Telescopio:</strong> <span id="telescopioText"></span></div>
+                <div><strong>Montura:</strong> <span id="monturaText"></span></div>
+                <div><strong>Cámara:</strong> <span id="camaraText"></span></div>
+                <div><strong>Ocular:</strong> <span id="ocularText"></span></div>
+            </div>
+
+            <!-- OBJETO -->
+            <div class="mb-3">
+                <label class="form-label">Objeto Celeste</label>
+                <select asp-for="objetoCelesteId" class="form-select">
+                    <option value="">Seleccione</option>
+
+                    @if (objetos != null)
+                    {
+                        foreach (var o in objetos)
+                        {
+                            <option value="@o.id">@o.nombre</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <!-- FECHA -->
+            <div class="mb-3">
+                <label class="form-label">Fecha observación</label>
+                <input asp-for="fechaObservacion" type="datetime-local" class="form-control" />
+            </div>
+
+            <!-- BOTÓN IA -->
+            <button type="button" id="btnEvaluar" class="btn btn-warning w-100 mb-3">
+                Evaluar con IA
+            </button>
+
+            <!-- RESULTADO IA -->
+            <div id="resultadoIA" class="alert alert-info d-none"></div>
+
+            <!-- SUBMIT -->
+            <button type="submit" class="btn btn-primary w-100">
+                Confirmar Observación
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    const apiBaseUrl = "@apiBaseUrl";
+    const token = "@token";
+
+    const select = document.getElementById("prestamoSelect");
+    const card = document.getElementById("equipoCard");
+
+    const t = document.getElementById("telescopioText");
+    const m = document.getElementById("monturaText");
+    const c = document.getElementById("camaraText");
+    const o = document.getElementById("ocularText");
+
+    const resultado = document.getElementById("resultadoIA");
+
+    let indicadorIA = null;
+    let detalleIA = null;
+
+    select.addEventListener("change", function () {
+        const opt = this.options[this.selectedIndex];
+
+        if (!opt.value) {
+            card.classList.add("d-none");
+            return;
+        }
+
+        t.innerText = opt.dataset.telescopio || "";
+        m.innerText = opt.dataset.montura || "";
+        c.innerText = opt.dataset.camara || "N/A";
+        o.innerText = opt.dataset.ocular || "N/A";
+
+        card.classList.remove("d-none");
+    });
+
+    document.getElementById("btnEvaluar").addEventListener("click", async () => {
+
+        const prestamoId = select.value;
+        const objetoCelesteId = document.querySelector("[name='objetoCelesteId']").value;
+
+        if (!prestamoId || !objetoCelesteId) {
+            alert("Seleccione préstamo y objeto celeste");
+            return;
+        }
+
+        const response = await fetch(`${apiBaseUrl}/evaluar-observacion`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                prestamoId: parseInt(prestamoId),
+                objetoCelesteId: parseInt(objetoCelesteId)
+            })
+        });
+
+        const text = await response.text();
+
+        if (!response.ok) {
+            resultado.classList.remove("d-none");
+            resultado.classList.add("alert-danger");
+            resultado.innerText = text;
+            return;
+        }
+
+        const data = JSON.parse(text);
+
+        indicadorIA = data.indicador;
+        detalleIA = data.detalle;
+
+        document.getElementById("indicadorInput").value = indicadorIA;
+        document.getElementById("detalleInput").value = detalleIA;
+
+        resultado.classList.remove("d-none", "alert-danger");
+        resultado.classList.add("alert-success");
+
+        resultado.innerText =
+            "Estado: " + indicadorIA + "\n" +
+            "Detalle: " + detalleIA;
+    });
+</script>
